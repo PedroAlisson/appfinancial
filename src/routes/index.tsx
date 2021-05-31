@@ -1,7 +1,9 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import SigIn from "../pages/SigIn";
-import SigUp from "../pages/SigUp";
+import SignIn from "../pages/SignIn";
+import SignUp from "../pages/SignUp";
+import Invest from "../pages/Invest";
+import InvestUp from "../pages/InvestUp";
 const Auth = createStackNavigator();
 
 const AuthRoutes: React.FC = () => (
@@ -11,9 +13,10 @@ const AuthRoutes: React.FC = () => (
       cardStyle: { backgroundColor: "#312e38" },
     }}
   >
-    <Auth.Screen name="SigIn" component={SigIn} />
-    <Auth.Screen name="SigUp" component={SigUp} />
+    <Auth.Screen name="SignIn" component={SignIn} />
+    <Auth.Screen name="SignUp" component={SignUp} />
+    <Auth.Screen name="Invest" component={Invest} />
+    <Auth.Screen name="InvestUp" component={InvestUp} />
   </Auth.Navigator>
 );
-
 export default AuthRoutes;
