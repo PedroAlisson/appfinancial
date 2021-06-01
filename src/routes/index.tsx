@@ -4,6 +4,7 @@ import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
 import Invest from "../pages/Invest";
 import InvestUp from "../pages/InvestUp";
+import StackRoutes from "./stack.routes";
 const Auth = createStackNavigator();
 
 const AuthRoutes: React.FC = () => (

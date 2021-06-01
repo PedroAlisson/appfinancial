@@ -1,11 +1,10 @@
 import styled from "styled-components/native";
 
 export const Container = styled.View`
-  margin-top: 20px;
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
-  padding: 5px 20px;
+  padding: 8px 20px;
 `;
 
 export const Text = styled.Text`
@@ -24,7 +23,7 @@ export const Image = styled.Image`
 export const ViewSelectInvest = styled.View`
   flex-direction: column;
   align-items: center;
-  margin-top: 30px;
+  margin-top: 20px;
 `;
 
 export const TextSelectInvest = styled.Text`
@@ -32,5 +31,3 @@ export const TextSelectInvest = styled.Text`
   font-size: 25px;
   color: #fff;
 `;
-
-export const ViewCard = styled.View``;

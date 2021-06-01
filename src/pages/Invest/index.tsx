@@ -2,11 +2,13 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useCallback, useEffect, useState } from "react";
 import Button from "../../components/Button";
 import Header from "../../components/Header";
-import { Text } from "react-native";
+import { KeyboardAvoidingView, Platform, Text } from "react-native";
 import api from "../../libs/api";
+
 import { Container, ViewInvest, TextInvest, SelectView } from "./styles";
 import { useNavigation } from "@react-navigation/core";
-import { FlatList } from "react-native-gesture-handler";
+import { FlatList, ScrollView } from "react-native-gesture-handler";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 interface selectPropsInvest {
   id: string;
@@ -35,34 +37,37 @@ const Invest: React.FC = () => {
 
       if (resultsInvest) {
         setInvest(resultsInvest);
-        console.log(resultsInvest);
       }
-      console.log("Sem registro");
+      return;
     }
     findInvest();
+    return;
   }, []);
 
   return (
-    <Container>
-      <Header> Escolha seu investimento </Header>
-      <ViewInvest>
-        <FlatList
-          data={invest}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => (
-            <SelectView>
-              <TextInvest>Nome: {item.name}</TextInvest>
-              <TextInvest>Data: {item.date}</TextInvest>
-              <TextInvest>Mês: {item.mes}</TextInvest>
-              <TextInvest>Valor: {item.value}</TextInvest>
-            </SelectView>
-          )}
-        />
-        <Button onPress={() => navigation.navigate("InvestUp")}>
-          <Text>Cadastrar Investimento</Text>
-        </Button>
-      </ViewInvest>
-    </Container>
+    <ScrollView keyboardShouldPersistTaps="handled">
+      <Container>
+        <Header> Escolha seu investimento </Header>
+        <ViewInvest>
+          <FlatList
+            data={invest}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => (
+              <SelectView>
+                <TextInvest>Nome: {item.name}</TextInvest>
+                <TextInvest>Data: {item.date}</TextInvest>
+                <TextInvest>Mês: {item.mes}</TextInvest>
+                <TextInvest>Valor: {item.value}</TextInvest>
+              </SelectView>
+            )}
+          />
+
+          <Button onPress={() => navigation.navigate("InvestUp")}>
+            <Text>Cadastrar Investimento</Text>
+          </Button>
+        </ViewInvest>
+      </Container>
+    </ScrollView>
   );
 };
 

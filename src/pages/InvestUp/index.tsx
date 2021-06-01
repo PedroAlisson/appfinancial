@@ -2,16 +2,11 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import Button from "../../components/Button";
 import Header from "../../components/Header";
-import {
-  Alert,
-  KeyboardAvoidingView,
-  Platform,
-  ScrollView,
-  TextInput,
-  View,
-} from "react-native";
+import { Alert, KeyboardAvoidingView, Platform, TextInput } from "react-native";
 import api from "../../libs/api";
 import { Container, ViewHeader } from "./styles";
+
+import { ScrollView } from "react-native-gesture-handler";
 import { Form } from "@unform/mobile";
 import { FormHandles } from "@unform/core";
 import Input from "../../components/Input";
@@ -71,70 +66,69 @@ const InvestUp: React.FC = () => {
   }, []);
 
   return (
-    <KeyboardAvoidingView
-      style={{ flex: 1 }}
-      behavior={Platform.OS === "ios" ? "padding" : undefined}
-      enabled
-    >
-      <ScrollView
-        keyboardShouldPersistTaps="handled"
-        contentContainerStyle={{ flex: 1 }}
-      >
-        <Container>
-          <ViewHeader>
-            <Header>Cadastre seu Instimento </Header>
-          </ViewHeader>
-          <Form ref={formRef} onSubmit={handleInvestUp}>
-            <Input
-              autoCapitalize="words"
-              name="name"
-              icon="user"
-              placeholder="Nome do ativo"
-              returnKeyType="next"
-              onSubmitEditing={() => {
-                mesInputRef.current?.focus();
-              }}
-            />
-            <Input
-              ref={mesInputRef}
-              autoCorrect={false}
-              autoCapitalize="none"
-              name="mes"
-              icon="calendar"
-              placeholder="Mes"
-              returnKeyType="next"
-              onSubmitEditing={() => {
-                valueInputRef.current?.focus();
-              }}
-            />
-            <Input
-              ref={valueInputRef}
-              autoCorrect={false}
-              autoCapitalize="none"
-              name="value"
-              icon="lock"
-              placeholder="Valor"
-              returnKeyType="next"
-              onSubmitEditing={() => {
-                dateInputRef.current?.focus();
-              }}
-            />
-            <Input
-              ref={dateInputRef}
-              secureTextEntry
-              name="date"
-              icon="lock"
-              placeholder="Data Compra"
-              returnKeyType="send"
-              onSubmitEditing={() => formRef.current?.submitForm()}
-            />
-            <Button onPress={() => formRef.current?.submitForm()}>
-              Cadastrar
-            </Button>
-          </Form>
-        </Container>
-      </ScrollView>
-    </KeyboardAvoidingView>
+    <>
+      <ViewHeader>
+        <Header>Cadastre seu Investimento </Header>
+      </ViewHeader>
+
+      <Container>
+        <KeyboardAvoidingView
+          style={{ flex: 1 }}
+          behavior={Platform.OS === "ios" ? "padding" : undefined}
+          enabled
+        >
+          <ScrollView keyboardShouldPersistTaps="handled">
+            <Form ref={formRef} onSubmit={handleInvestUp}>
+              <Input
+                autoCapitalize="words"
+                name="name"
+                icon="info"
+                placeholder="Nome do ativo"
+                returnKeyType="next"
+                onSubmitEditing={() => {
+                  mesInputRef.current?.focus();
+                }}
+              />
+              <Input
+                ref={mesInputRef}
+                autoCorrect={false}
+                autoCapitalize="none"
+                name="mes"
+                icon="calendar"
+                placeholder="Mes"
+                returnKeyType="next"
+                onSubmitEditing={() => {
+                  valueInputRef.current?.focus();
+                }}
+              />
+              <Input
+                ref={valueInputRef}
+                autoCorrect={false}
+                autoCapitalize="none"
+                name="value"
+                icon="dollar-sign"
+                placeholder="Valor"
+                returnKeyType="next"
+                onSubmitEditing={() => {
+                  dateInputRef.current?.focus();
+                }}
+              />
+              <Input
+                ref={dateInputRef}
+                name="date"
+                icon="calendar"
+                placeholder="Data Compra"
+                returnKeyType="send"
+                onSubmitEditing={() => formRef.current?.submitForm()}
+              />
+              <Button onPress={() => formRef.current?.submitForm()}>
+                Cadastrar Investimento
+              </Button>
+            </Form>
+          </ScrollView>
+        </KeyboardAvoidingView>
+      </Container>
+    </>
   );
 };
 

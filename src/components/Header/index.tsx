@@ -6,10 +6,10 @@ import {
   Image,
   ViewSelectInvest,
   TextSelectInvest,
-  ViewCard,
 } from "./styles";
 import ImageAvatar from "../../assets/logo.png";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { View } from "react-native";
 
 const Header: React.FC = ({ children, ...rest }) => {
   const [data, setData] = useState([]);
@@ -28,7 +28,7 @@ const Header: React.FC = ({ children, ...rest }) => {
   }, []);
 
   return (
-    <>
+    <View>
       <Container {...rest}>
         <Text>Olá, {data} </Text>
         <Image source={ImageAvatar} />
@@ -36,9 +36,7 @@ const Header: React.FC = ({ children, ...rest }) => {
       <ViewSelectInvest>
         <TextSelectInvest>{children}</TextSelectInvest>
       </ViewSelectInvest>
-
-      <ViewCard></ViewCard>
-    </>
+    </View>
   );
 };
 
