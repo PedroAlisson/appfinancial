@@ -4,8 +4,9 @@ export const Container = styled.View`
   flex: 1;
   align-items: center;
   padding: 20px;
+  background-color: #312e38;
 `;
 
 export const ViewHeader = styled.View`
-  margin-bottom: 40px;
+  background-color: #312e38;
 `;

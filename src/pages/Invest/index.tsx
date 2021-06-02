@@ -61,10 +61,6 @@ const Invest: React.FC = () => {
               </SelectView>
             )}
           />
-
-          <Button onPress={() => navigation.navigate("InvestUp")}>
-            <Text>Cadastrar Investimento</Text>
-          </Button>
         </ViewInvest>
       </Container>
     </ScrollView>
