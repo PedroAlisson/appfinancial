@@ -1,26 +1,15 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useCallback, useEffect, useState } from "react";
-import Button from "../../components/Button";
 import Header from "../../components/Header";
-import { KeyboardAvoidingView, Platform, Text } from "react-native";
 import api from "../../libs/api";
 
-import { Container, ViewInvest, TextInvest, SelectView } from "./styles";
+import { Container, ViewInvest } from "./styles";
 import { useNavigation } from "@react-navigation/core";
 import { FlatList, ScrollView } from "react-native-gesture-handler";
-import { SafeAreaView } from "react-native-safe-area-context";
+import CardInvest from "../../components/Cards/CardInvest";
 
 interface selectPropsInvest {
-  id: string;
-  name: string;
-  mes: string;
-  value: number;
-  date: Date;
-}
-
-interface UserPropsRequest {
-  id: string;
-  token: string;
+  data: { id: string; name: string; mes: string; value: number; date: Date };
 }
 
 const Invest: React.FC = () => {
@@ -28,7 +17,7 @@ const Invest: React.FC = () => {
   const navigation = useNavigation();
 
   useEffect(() => {
-    async function findInvest(data: selectPropsInvest) {
+    async function findInvest() {
       const token = await AsyncStorage.getItem("@Financial:Token");
 
       api.defaults.headers.Authorization = `Baered ${token}`;
@@ -44,6 +33,10 @@ const Invest: React.FC = () => {
     return;
   }, []);
 
+  function handleFindInvest(invest: selectPropsInvest) {
+    navigation.navigate("Card", { invest });
+  }
+
   return (
     <ScrollView keyboardShouldPersistTaps="handled">
       <Container>
@@ -51,14 +44,9 @@ const Invest: React.FC = () => {
         <ViewInvest>
           <FlatList
             data={invest}
-            keyExtractor={(item) => item.id}
+            keyExtractor={(item) => String(item.id)}
             renderItem={({ item }) => (
-              <SelectView>
-                <TextInvest>Nome: {item.name}</TextInvest>
-                <TextInvest>Data: {item.date}</TextInvest>
-                <TextInvest>Mês: {item.mes}</TextInvest>
-                <TextInvest>Valor: {item.value}</TextInvest>
-              </SelectView>
+              <CardInvest data={item} onPress={() => handleFindInvest(item)} />
             )}
           />
         </ViewInvest>
