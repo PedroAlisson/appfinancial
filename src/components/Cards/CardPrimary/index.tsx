@@ -1,4 +1,5 @@
 import { useNavigation, useRoute } from "@react-navigation/core";
+import { format } from "date-fns";
 import React, { useCallback } from "react";
 import { Alert } from "react-native";
 import api from "../../../libs/api";
@@ -28,16 +29,20 @@ const CardPrimary: React.FC = () => {
     navigate.navigate("Invest");
   }, []);
 
+  const handleInvestAlter = useCallback(() => {
+    navigate.navigate("CardAlter", { invest });
+  }, []);
+
   return (
     <Container>
       <Header> Investimento Selecionado </Header>
       <ContainerInvestSelect>
         <Text>Nome: {invest.name}</Text>
-        <Text>Data: {invest.date}</Text>
+        <Text>Data: {format(new Date(invest.date), "MM/dd/yyy")}</Text>
         <Text>Mês: {invest.mes}</Text>
         <Text>Valor: {invest.value}</Text>
         <ContainerButton>
-          <ButtonAlter>
+          <ButtonAlter onPress={handleInvestAlter}>
             <Text>Editar</Text>
           </ButtonAlter>
           <ButtonExcl onPress={handleInvestDelete}>

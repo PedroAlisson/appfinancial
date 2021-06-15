@@ -7,10 +7,16 @@ export const SelectView = styled.View`
   width: 95%;
   padding: 20px;
   margin-bottom: 15px;
+  justify-content: center;
+`;
+
+export const ViewContainer = styled.View`
+  align-items: center;
+  justify-content: center;
 `;
 
 export const TextInvest = styled.Text`
   color: black;
-  font-size: 18px;
+  font-size: 20px;
   font-family: "RobotoSlab-Regular";
 `;
