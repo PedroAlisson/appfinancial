@@ -9,10 +9,13 @@ import {
 } from "./styles";
 import ImageAvatar from "../../assets/logo.png";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { View } from "react-native";
+import { TouchableOpacity, View } from "react-native";
+import { useNavigation } from "@react-navigation/core";
 
 const Header: React.FC = ({ children, ...rest }) => {
   const [data, setData] = useState([]);
+
+  const navigation = useNavigation();
 
   useEffect(() => {
     async function loadStorageData(): Promise<void> {
@@ -27,11 +30,17 @@ const Header: React.FC = ({ children, ...rest }) => {
     loadStorageData();
   }, []);
 
+  const handleUser = useCallback(() => {
+    navigation.navigate("Users");
+  }, []);
+
   return (
     <View>
       <Container {...rest}>
         <Text>Olá, {data} </Text>
-        <Image source={ImageAvatar} />
+        <TouchableOpacity onPress={handleUser}>
+          <Image source={ImageAvatar} />
+        </TouchableOpacity>
       </Container>
       <ViewSelectInvest>
         <TextSelectInvest>{children}</TextSelectInvest>
