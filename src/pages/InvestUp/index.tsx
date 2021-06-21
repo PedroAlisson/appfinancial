@@ -1,5 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useRef } from "react";
 import Button from "../../components/Button";
 import Header from "../../components/Header";
 import { Alert, KeyboardAvoidingView, Platform, TextInput } from "react-native";

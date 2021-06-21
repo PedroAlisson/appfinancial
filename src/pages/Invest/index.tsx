@@ -7,6 +7,7 @@ import { Container, ViewInvest } from "./styles";
 import { useNavigation } from "@react-navigation/core";
 import { FlatList, ScrollView } from "react-native-gesture-handler";
 import CardInvest from "../../components/Cards/CardInvest";
+import Button from "../../components/Button";
 
 interface selectPropsInvest {
   data: { id: string; name: string; mes: string; value: number; date: Date };
@@ -51,6 +52,7 @@ const Invest: React.FC = () => {
           />
         </ViewInvest>
       </Container>
+      <Button onPress={() => navigation.navigate("Bill")}>Bill</Button>
     </ScrollView>
   );
 };
