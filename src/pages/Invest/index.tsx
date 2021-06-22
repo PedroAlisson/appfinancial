@@ -52,7 +52,6 @@ const Invest: React.FC = () => {
           />
         </ViewInvest>
       </Container>
-      <Button onPress={() => navigation.navigate("Bill")}>Bill</Button>
     </ScrollView>
   );
 };

@@ -8,7 +8,7 @@ import Header from "../../components/Header";
 import Input from "../../components/Input";
 import api from "../../libs/api";
 
-import { Container, ViewBill } from "./style";
+import { Container } from "./style";
 
 interface BillPropsRequest {
   name: string;
@@ -46,9 +46,8 @@ const Bill: React.FC = () => {
   }, []);
 
   return (
-    <>
+    <Container>
       <Header>Cadastre suas despesas </Header>
-      <ViewBill></ViewBill>
       <Container>
         <KeyboardAvoidingView
           style={{ flex: 1 }}
@@ -118,7 +117,7 @@ const Bill: React.FC = () => {
           </ScrollView>
         </KeyboardAvoidingView>
       </Container>
-    </>
+    </Container>
   );
 };
 
