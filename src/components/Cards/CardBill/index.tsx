@@ -1,7 +1,7 @@
 import { format } from "date-fns";
 import React from "react";
 import { RectButton, RectButtonProps } from "react-native-gesture-handler";
-import { ViewContainer, TextInvest, Container } from "./styles";
+import { ViewContainer, TextInvest, SelectView } from "./styles";
 
 interface selectPropsBill extends RectButtonProps {
   data: {
@@ -16,7 +16,7 @@ interface selectPropsBill extends RectButtonProps {
 const CardBill: React.FC<selectPropsBill> = ({ data, ...rest }) => {
   return (
     <RectButton {...rest}>
-      <Container>
+      <SelectView>
         <ViewContainer>
           <TextInvest>Nome: {data.name}</TextInvest>
           <TextInvest>
@@ -26,7 +26,7 @@ const CardBill: React.FC<selectPropsBill> = ({ data, ...rest }) => {
           <TextInvest>Status: {data.status}</TextInvest>
           <TextInvest>Valor: {data.value}</TextInvest>
         </ViewContainer>
-      </Container>
+      </SelectView>
     </RectButton>
   );
 };

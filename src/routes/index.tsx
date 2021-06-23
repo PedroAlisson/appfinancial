@@ -2,8 +2,9 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
-import Bill from "../pages/Bill";
-import StackRoutes from "./stack.routes";
+import Home from "../pages/Home";
+import StackRoutesInvest from "./stackInvest.routes";
+import StackRoutesBill from "./stackBill.routes";
 import Card from "../components/Cards/CardPrimary";
 import CardUser from "../components/Cards/CardUsers";
 
@@ -18,11 +19,12 @@ const AuthRoutes: React.FC = () => (
     }}
   >
     <Auth.Screen name="SignIn" component={SignIn} />
+    <Auth.Screen name="Home" component={Home} />
     <Auth.Screen name="SignUp" component={SignUp} />
-    <Auth.Screen name="Invest" component={StackRoutes} />
+    <Auth.Screen name="Invest" component={StackRoutesInvest} />
+    <Auth.Screen name="Bill" component={StackRoutesBill} />
     <Auth.Screen name="Users" component={CardUser} />
     <Auth.Screen name="Card" component={Card} />
-    <Auth.Screen name="Bill" component={Bill} />
     <Auth.Screen name="CardAlter" component={CardAlter} />
   </Auth.Navigator>
 );

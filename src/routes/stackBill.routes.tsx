@@ -1,12 +1,11 @@
 import React from "react";
-import Invest from "../pages/Invest";
-import InvestUp from "../pages/InvestUp";
+import BillUp from "../pages/BillUp";
 import Bill from "../pages/Bill";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 const Tab = createBottomTabNavigator();
 
-const StackRoutes: React.FC = () => {
+const StackRoutesBill: React.FC = () => {
   return (
     <Tab.Navigator
       tabBarOptions={{
@@ -19,11 +18,10 @@ const StackRoutes: React.FC = () => {
         },
       }}
     >
-      <Tab.Screen name="Investimentos" component={Invest} />
-      <Tab.Screen name="Cadastro de Investimentos" component={InvestUp} />
-      <Tab.Screen name="Cadastro de Contas" component={Bill} />
+      <Tab.Screen name="Contas" component={Bill} />
+      <Tab.Screen name="Contas1" component={BillUp} />
     </Tab.Navigator>
   );
 };
 
-export default StackRoutes;
+export default StackRoutesBill;

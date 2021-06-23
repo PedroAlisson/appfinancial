@@ -1,5 +1,13 @@
 import styled from "styled-components/native";
 
+export const SelectView = styled.View`
+  border-radius: 30px;
+  width: 95%;
+  padding: 20px;
+  margin-bottom: 15px;
+  justify-content: center;
+`;
+
 export const Container = styled.View`
   flex: 1;
   align-items: center;

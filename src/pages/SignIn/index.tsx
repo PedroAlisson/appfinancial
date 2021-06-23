@@ -76,7 +76,7 @@ const SignIn: React.FC = () => {
         console.log(error);
       }
 
-      navigation.navigate("Invest");
+      navigation.navigate("Home");
     } catch (error) {
       Alert.alert(error);
     }
