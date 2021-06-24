@@ -19,7 +19,7 @@ const StackRoutesBill: React.FC = () => {
       }}
     >
       <Tab.Screen name="Contas" component={Bill} />
-      <Tab.Screen name="Contas1" component={BillUp} />
+      <Tab.Screen name="Cadastrar" component={BillUp} />
     </Tab.Navigator>
   );
 };

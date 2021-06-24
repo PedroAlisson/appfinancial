@@ -72,7 +72,7 @@ const BillUp: React.FC = () => {
                 autoCapitalize="none"
                 name="date"
                 icon="calendar"
-                placeholder="Mes"
+                placeholder="12/06/1997"
                 returnKeyType="next"
                 onSubmitEditing={() => {
                   status.current?.focus();

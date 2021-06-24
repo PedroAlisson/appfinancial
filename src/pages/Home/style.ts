@@ -1,6 +1,11 @@
 import styled from "styled-components/native";
 import FeatherIcon from "react-native-vector-icons/Feather";
 
+export const Container = styled.View`
+  flex: 1;
+  align-items: center;
+`;
+
 export const TouchableOpacity = styled.TouchableOpacity`
   width: 120px;
   height: 90px;
@@ -9,6 +14,7 @@ export const TouchableOpacity = styled.TouchableOpacity`
   margin-left: 10px;
   justify-content: space-between;
   align-items: center;
+  margin-top: 10px;
 `;
 
 export const ContainerMenu = styled.View`
@@ -30,4 +36,11 @@ export const Icon = styled(FeatherIcon)`
   text-align: center;
   margin-top: 20px;
   color: black;
+`;
+
+export const Image = styled.Image`
+  width: 100%;
+  background-color: red;
+  border-radius: 50px;
+  padding-right: 20px;
 `;

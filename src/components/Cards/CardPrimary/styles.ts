@@ -16,6 +16,7 @@ export const ContainerInvestSelect = styled.View`
 export const Text = styled.Text`
   font-size: 20px;
   line-height: 40px;
+  font-family: "RobotoSlab-Regular";
 `;
 export const ContainerButton = styled.View`
   width: 100%;
