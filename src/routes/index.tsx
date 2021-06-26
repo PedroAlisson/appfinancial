@@ -6,6 +6,7 @@ import Home from "../pages/Home";
 import StackRoutesInvest from "./stackInvest.routes";
 import StackRoutesBill from "./stackBill.routes";
 import Card from "../components/Cards/CardPrimary";
+import CardBill from "../components/Cards/CardPrimaryBill";
 import CardUser from "../components/Cards/CardUsers";
 
 import CardAlter from "../components/Cards/CardAlter";
@@ -25,6 +26,7 @@ const AuthRoutes: React.FC = () => (
     <Auth.Screen name="Bill" component={StackRoutesBill} />
     <Auth.Screen name="Users" component={CardUser} />
     <Auth.Screen name="Card" component={Card} />
+    <Auth.Screen name="CardBill" component={CardBill} />
     <Auth.Screen name="CardAlter" component={CardAlter} />
   </Auth.Navigator>
 );

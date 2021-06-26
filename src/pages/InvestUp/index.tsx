@@ -25,6 +25,7 @@ const InvestUp: React.FC = () => {
   const mesInputRef = useRef<TextInput>(null);
   const valueInputRef = useRef<TextInput>(null);
   const dateInputRef = useRef<TextInput>(null);
+  const amountInputRef = useRef<TextInput>(null);
 
   const handleInvestUp = useCallback(async (data: InvestPropsRequest) => {
     try {
@@ -40,7 +41,7 @@ const InvestUp: React.FC = () => {
       //   });
       //
 
-      const { name, mes, value, date } = data;
+      const { name, mes, value, date, amount } = data;
 
       const user = await AsyncStorage.getItem("@Financial:Id");
 
@@ -57,6 +58,7 @@ const InvestUp: React.FC = () => {
         value,
         date,
         user_id,
+        amount,
       });
 
       Alert.alert("Investimento cadastrado com sucesso");
@@ -96,6 +98,18 @@ const InvestUp: React.FC = () => {
                 name="mes"
                 icon="calendar"
                 placeholder="Mes"
+                returnKeyType="next"
+                onSubmitEditing={() => {
+                  amountInputRef.current?.focus();
+                }}
+              />
+              <Input
+                ref={amountInputRef}
+                autoCorrect={false}
+                autoCapitalize="none"
+                name="amount"
+                icon="dollar-sign"
+                placeholder="Quantidade"
                 returnKeyType="next"
                 onSubmitEditing={() => {
                   valueInputRef.current?.focus();

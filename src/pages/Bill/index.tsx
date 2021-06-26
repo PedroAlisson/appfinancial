@@ -6,9 +6,23 @@ import api from "../../libs/api";
 import CardBill from "../../components/Cards/CardBill";
 
 import { Container, ViewBill } from "./styles";
+import { KeyboardAvoidingView, Platform } from "react-native";
+import { useNavigation } from "@react-navigation/core";
+
+interface selectPropsBill {
+  data: {
+    id: string;
+    name: string;
+    mes: string;
+    value: number;
+    date: Date;
+    status: string;
+  };
+}
 
 const Bill: React.FC = () => {
   const [bill, setBill] = useState([]);
+  const navigation = useNavigation();
 
   useEffect(() => {
     async function findBills() {
@@ -26,9 +40,17 @@ const Bill: React.FC = () => {
     findBills();
   }, []);
 
+  function handleFindBill(bill: selectPropsBill) {
+    navigation.navigate("CardBill", { bill });
+  }
+
   return (
-    <Container>
-      <ScrollView keyboardShouldPersistTaps="findBills">
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      behavior={Platform.OS === "ios" ? "padding" : undefined}
+      enabled
+    >
+      <ScrollView keyboardShouldPersistTaps="handled">
         <Container>
           <Header> Escolha suas Depesas </Header>
           <ViewBill>
@@ -36,13 +58,13 @@ const Bill: React.FC = () => {
               data={bill}
               keyExtractor={(item) => String(item.id)}
               renderItem={({ item }) => (
-                <CardBill data={item} onPress={() => findBills(item)} />
+                <CardBill data={item} onPress={() => handleFindBill(item)} />
               )}
             />
           </ViewBill>
         </Container>
       </ScrollView>
-    </Container>
+    </KeyboardAvoidingView>
   );
 };
 

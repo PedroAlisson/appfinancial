@@ -55,7 +55,7 @@ export const Button = styled.TouchableOpacity`
 export const Text = styled.Text`
   color: #fff;
   font-size: 15px;
-  font-family: "Roboto-Slab";
+  font-family: "RobotoSlab-Regular";
 `;
 
 export const ViewUser = styled.View`

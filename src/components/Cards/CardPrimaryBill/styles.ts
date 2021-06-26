@@ -5,7 +5,7 @@ export const Container = styled.View`
   align-items: center;
 `;
 
-export const ContainerInvestSelect = styled.View`
+export const ContainerBillSelect = styled.View`
   width: 90%;
   padding: 20px;
   background-color: #fff;

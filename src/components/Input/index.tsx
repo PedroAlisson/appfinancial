@@ -42,7 +42,6 @@ const Input: React.RefForwardingComponent<InputRef, InputProps> = (
 
   const handleInputBlur = useCallback(() => {
     setIsFocused(false);
-
     setIsFilled(!!inputValueRef.current.value);
   }, []);
 

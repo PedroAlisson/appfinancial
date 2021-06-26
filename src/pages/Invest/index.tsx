@@ -7,6 +7,7 @@ import { Container, ViewInvest } from "./styles";
 import { useNavigation } from "@react-navigation/core";
 import { FlatList, ScrollView } from "react-native-gesture-handler";
 import CardInvest from "../../components/Cards/CardInvest";
+import { KeyboardAvoidingView, Platform } from "react-native";
 
 interface selectPropsInvest {
   data: { id: string; name: string; mes: string; value: number; date: Date };
@@ -38,20 +39,30 @@ const Invest: React.FC = () => {
   }
 
   return (
-    <ScrollView keyboardShouldPersistTaps="handled">
-      <Container>
-        <Header> Escolha seu investimento </Header>
-        <ViewInvest>
-          <FlatList
-            data={invest}
-            keyExtractor={(item) => String(item.id)}
-            renderItem={({ item }) => (
-              <CardInvest data={item} onPress={() => handleFindInvest(item)} />
-            )}
-          />
-        </ViewInvest>
-      </Container>
-    </ScrollView>
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      behavior={Platform.OS === "ios" ? "padding" : undefined}
+      enabled
+    >
+      <ScrollView keyboardShouldPersistTaps="handled">
+        <Container>
+          <Header> Escolha seu investimento </Header>
+          <ViewInvest>
+            <FlatList
+              initialNumToRender={invest.length}
+              data={invest}
+              keyExtractor={(item) => String(item.id)}
+              renderItem={({ item }) => (
+                <CardInvest
+                  data={item}
+                  onPress={() => handleFindInvest(item)}
+                />
+              )}
+            />
+          </ViewInvest>
+        </Container>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 

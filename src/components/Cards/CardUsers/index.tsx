@@ -10,7 +10,7 @@ import { Form } from "@unform/mobile";
 import { FormHandles } from "@unform/core";
 import Icon from "react-native-vector-icons/Feather";
 import { ScrollView } from "react-native-gesture-handler";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import logoImg from "../../../assets/logo.png";
 
 import {
@@ -33,6 +33,10 @@ interface UserPropsCreate {
   name: string;
   email: string;
   password: string;
+}
+
+interface Params {
+  bill: Object;
 }
 
 const CardUsers: React.FC = () => {
@@ -58,7 +62,7 @@ const CardUsers: React.FC = () => {
     findUser();
   }, []);
 
-  const handleSignUp = useCallback(async (data: UserPropsCreate) => {
+  const handleUserAlter = useCallback(async (data: UserPropsCreate) => {
     try {
       //const { name, email, password } = data;
 
@@ -70,22 +74,33 @@ const CardUsers: React.FC = () => {
         password: Yup.string().required("Senha Obrigatória"),
       });
 
-      await schema.validate(data, {
-        abortEarly: false,
-      });
+    //  await schema.validate(data, {
+      //  abortEarly: false,
+     // });
 
       const { name, email, password } = data;
+      const user_id = await AsyncStorage.getItem("@Financial:Id");
+      const id = JSON.parse(user_id);
 
-      const users = await api.post("/users", {
+      const users = await api.put(`users/${id}`, {
         name,
         email,
         password,
       });
 
-      Alert.alert("Usuário cadastrado com sucesso");
+      Alert.alert("Usuário Alterado com sucesso");
     } catch (error) {
-      Alert.alert("Erro ao cadastrar usuário");
+      Alert.alert("Erro ao Alterar usuário");
     }
+  }, []);
+
+  const handleUsersDelete = useCallback(async () => {
+    const user_id = await AsyncStorage.getItem("@Financial:Id");
+    const id = JSON.parse(user_id);
+    const users = await api.delete(`users/${id}`);
+    //console.log(users);
+    Alert.alert("Usuário deletado");
+    navigation.navigate("SignIn");
   }, []);
 
   return (
@@ -103,7 +118,7 @@ const CardUsers: React.FC = () => {
           <View>
             <Title>Perfil do Usuário</Title>
           </View>
-          <Form ref={formRef} onSubmit={handleSignUp}>
+          <Form ref={formRef} onSubmit={handleUserAlter}>
             <Input
               autoCapitalize="words"
               name="name"
@@ -146,12 +161,12 @@ const CardUsers: React.FC = () => {
                 onPress={() => formRef.current?.submitForm()}
               >
                 <Icon name="edit-2" size={20} color="#fff">
-                  <Text>Alterar</Text>{" "}
+                  <Text>Alterar</Text>
                 </Icon>
               </Button>
               <Button
                 style={{ backgroundColor: "red" }}
-                onPress={() => formRef.current?.submitForm()}
+                onPress={handleUsersDelete}
               >
                 <Icon name="delete" size={20} color="#fff">
                   <Text> Deletar</Text>

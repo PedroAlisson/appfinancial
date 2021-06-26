@@ -1,7 +1,7 @@
 import { format } from "date-fns";
 import React from "react";
 import { RectButton, RectButtonProps } from "react-native-gesture-handler";
-import { ViewContainer, TextInvest, SelectView } from "./styles";
+import { ViewContainer, TextBill, SelectView } from "./styles";
 
 interface selectPropsBill extends RectButtonProps {
   data: {
@@ -18,13 +18,11 @@ const CardBill: React.FC<selectPropsBill> = ({ data, ...rest }) => {
     <RectButton {...rest}>
       <SelectView>
         <ViewContainer>
-          <TextInvest>Nome: {data.name}</TextInvest>
-          <TextInvest>
-            Data: {format(new Date(data.date), "MM/dd/yyy")}
-          </TextInvest>
-          <TextInvest>Mês: {data.mes}</TextInvest>
-          <TextInvest>Status: {data.status}</TextInvest>
-          <TextInvest>Valor: {data.value}</TextInvest>
+          <TextBill>Nome: {data.name}</TextBill>
+          <TextBill>Data: {format(new Date(data.date), "MM/dd/yyy")}</TextBill>
+          <TextBill>Mês: {data.mes}</TextBill>
+          <TextBill>Status: {data.status}</TextBill>
+          <TextBill>Valor: {data.value}</TextBill>
         </ViewContainer>
       </SelectView>
     </RectButton>

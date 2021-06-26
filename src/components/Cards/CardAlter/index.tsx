@@ -34,6 +34,7 @@ const CardInvestAlter: React.FC = () => {
   const mesInputRef = useRef<TextInput>(null);
   const valueInputRef = useRef<TextInput>(null);
   const dateInputRef = useRef<TextInput>(null);
+  const amountInputRef = useRef<TextInput>(null);
 
   const handleInvestAlter = useCallback(
     async (data: InvestPropsAlterRequest) => {
@@ -51,7 +52,7 @@ const CardInvestAlter: React.FC = () => {
         //
 
         const { name, mes, value, date } = data;
-
+        
         const user = await AsyncStorage.getItem("@Financial:Id");
 
         const token = await AsyncStorage.getItem("@Financial:Token");
@@ -108,6 +109,19 @@ const CardInvestAlter: React.FC = () => {
                 icon="calendar"
                 defaultValue={invest.mes}
                 placeholder="Mes"
+                returnKeyType="next"
+                onSubmitEditing={() => {
+                  amountInputRef.current?.focus();
+                }}
+              />
+              <Input
+                ref={amountInputRef}
+                autoCorrect={false}
+                autoCapitalize="none"
+                name="amount"
+                icon="dollar-sign"
+                defaultValue={invest.value}
+                placeholder="Valor"
                 returnKeyType="next"
                 onSubmitEditing={() => {
                   valueInputRef.current?.focus();

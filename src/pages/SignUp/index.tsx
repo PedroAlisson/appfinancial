@@ -48,9 +48,9 @@ const SignUp: React.FC = () => {
         password: Yup.string().required("Senha Obrigatória"),
       });
 
-      await schema.validate(data, {
-        abortEarly: false,
-      });
+      //   await schema.validate(data, {
+      //     abortEarly: false,
+      //   });
 
       const { name, email, password } = data;
 
