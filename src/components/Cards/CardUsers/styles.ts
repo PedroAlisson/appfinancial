@@ -47,7 +47,6 @@ export const BackToSignInText = styled.Text`
 
 export const Button = styled.TouchableOpacity`
   width: 45%;
-  background-color: red;
   padding: 20px;
   border-radius: 20px;
   align-items: center;

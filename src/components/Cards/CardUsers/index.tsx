@@ -1,4 +1,4 @@
-import React, { useRef, useCallback, useEffect } from "react";
+import React, { useRef, useCallback, useEffect, useState } from "react";
 import {
   KeyboardAvoidingView,
   Platform,
@@ -27,6 +27,7 @@ import {
 import * as Yup from "yup";
 import api from "../../../libs/api";
 import Input from "../../Input";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 interface UserPropsCreate {
   name: string;
@@ -39,8 +40,23 @@ const CardUsers: React.FC = () => {
   const emailInputRef = useRef<TextInput>(null);
   const passwordInputRef = useRef<TextInput>(null);
   const navigation = useNavigation();
+  const [user, setUser] = useState([]);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    async function findUser() {
+      const token = await AsyncStorage.getItem("@Financial:Token");
+
+      api.defaults.headers.Authorization = `Baered ${token}`;
+      const users = await api.get("users");
+      const resultsUser = users.data;
+
+      if (resultsUser) {
+        setUser(resultsUser);
+      }
+      return;
+    }
+    findUser();
+  }, []);
 
   const handleSignUp = useCallback(async (data: UserPropsCreate) => {
     try {
@@ -93,6 +109,7 @@ const CardUsers: React.FC = () => {
               name="name"
               icon="user"
               placeholder="Nome"
+              defaultValue={user.name}
               returnKeyType="next"
               onSubmitEditing={() => {
                 emailInputRef.current?.focus();
@@ -103,6 +120,7 @@ const CardUsers: React.FC = () => {
               keyboardType="email-address"
               autoCorrect={false}
               autoCapitalize="none"
+              defaultValue={user.email}
               name="email"
               icon="mail"
               placeholder="E-mail"
@@ -115,6 +133,7 @@ const CardUsers: React.FC = () => {
               ref={passwordInputRef}
               secureTextEntry
               name="password"
+              defaultValue={user.password}
               icon="lock"
               placeholder="Senha"
               textContentType="newPassword"
@@ -122,11 +141,21 @@ const CardUsers: React.FC = () => {
               onSubmitEditing={() => formRef.current?.submitForm()}
             />
             <ViewUser>
-              <Button onPress={() => formRef.current?.submitForm()}>
-                <Text> Alterar</Text>
+              <Button
+                style={{ backgroundColor: "orange" }}
+                onPress={() => formRef.current?.submitForm()}
+              >
+                <Icon name="edit-2" size={20} color="#fff">
+                  <Text>Alterar</Text>{" "}
+                </Icon>
               </Button>
-              <Button onPress={() => formRef.current?.submitForm()}>
-                <Text> Deletar</Text>
+              <Button
+                style={{ backgroundColor: "red" }}
+                onPress={() => formRef.current?.submitForm()}
+              >
+                <Icon name="delete" size={20} color="#fff">
+                  <Text> Deletar</Text>
+                </Icon>
               </Button>
             </ViewUser>
           </Form>

@@ -8,13 +8,13 @@ export const Container = styled.View`
 
 export const TouchableOpacity = styled.TouchableOpacity`
   width: 120px;
-  height: 90px;
+  height: 80px;
   background-color: gray;
   border-radius: 20px;
   margin-left: 10px;
   justify-content: space-between;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 20px;
 `;
 
 export const ContainerMenu = styled.View`
@@ -36,6 +36,8 @@ export const Icon = styled(FeatherIcon)`
   text-align: center;
   margin-top: 20px;
   color: black;
+  background-color: gold;
+  border-radius: 10px;
 `;
 
 export const Image = styled.Image`

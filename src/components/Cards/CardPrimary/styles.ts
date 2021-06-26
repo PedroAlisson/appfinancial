@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import FeatherIcon from "react-native-vector-icons/Feather";
 export const Container = styled.View`
   flex: 1;
   align-items: center;
@@ -17,7 +18,14 @@ export const Text = styled.Text`
   font-size: 20px;
   line-height: 40px;
   font-family: "RobotoSlab-Regular";
+  align-items: center;
 `;
+
+export const TextButton = styled.Text`
+  font-family: "RobotoSlab-Regular";
+  align-items: center;
+`;
+
 export const ContainerButton = styled.View`
   width: 100%;
   justify-content: space-between;
@@ -25,18 +33,15 @@ export const ContainerButton = styled.View`
   margin-top: 30px;
 `;
 
-export const ButtonAlter = styled.TouchableOpacity`
+export const Button = styled.TouchableOpacity`
   align-items: center;
-  padding: 20px;
   background-color: orange;
   border-radius: 25px;
-  width: 45%;
+  justify-content: space-between;
 `;
 
-export const ButtonExcl = styled.TouchableOpacity`
-  align-items: center;
+export const Icon = styled(FeatherIcon)`
+  margin: 16px;
+  flex-direction: row;
   padding: 20px;
-  background-color: red;
-  border-radius: 25px;
-  width: 45%;
 `;

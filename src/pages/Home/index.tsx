@@ -28,7 +28,7 @@ const Home: React.FC<RectProps> = ({ title, ...rest }) => {
           <Text>Home</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate("Invest")}>
-          <Icon name="dollar-sign" size={25} color="#fff"></Icon>
+          <Icon name="repeat" size={25} color="#fff"></Icon>
           <Text>Investimentos</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate("Bill")}>

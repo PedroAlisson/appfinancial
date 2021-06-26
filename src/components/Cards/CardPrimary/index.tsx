@@ -9,9 +9,10 @@ import {
   Container,
   Text,
   ContainerInvestSelect,
-  ButtonAlter,
-  ButtonExcl,
+  Button,
   ContainerButton,
+  Icon,
+  TextButton,
 } from "./styles";
 
 interface Params {
@@ -42,12 +43,22 @@ const CardPrimary: React.FC = () => {
         <Text>Mês: {invest.mes}</Text>
         <Text>Valor: {invest.value}</Text>
         <ContainerButton>
-          <ButtonAlter onPress={handleInvestAlter}>
-            <Text>Editar</Text>
-          </ButtonAlter>
-          <ButtonExcl onPress={handleInvestDelete}>
-            <Text>Excluir</Text>
-          </ButtonExcl>
+          <Button
+            style={{ backgroundColor: "orange" }}
+            onPress={handleInvestAlter}
+          >
+            <Icon name="edit-2" size={20} color="#fff">
+              <TextButton>Editar</TextButton>
+            </Icon>
+          </Button>
+          <Button
+            style={{ backgroundColor: "red" }}
+            onPress={handleInvestDelete}
+          >
+            <Icon name="delete" size={20} color="#fff">
+              <TextButton>Excluir</TextButton>
+            </Icon>
+          </Button>
         </ContainerButton>
       </ContainerInvestSelect>
     </Container>
