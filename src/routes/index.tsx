@@ -8,9 +8,10 @@ import StackRoutesInvest from "./stackInvest.routes";
 import StackRoutesBill from "./stackBill.routes";
 import Card from "../components/Cards/CardPrimary";
 import CardBill from "../components/Cards/CardPrimaryBill";
+import CardAlterBill from "../components/Cards/CardAlterBill";
 import CardUser from "../components/Cards/CardUsers";
 
-import CardAlter from "../components/Cards/CardAlter";
+import CardAlter from "../components/Cards/CardAlterInvest";
 const Auth = createStackNavigator();
 
 const AuthRoutes: React.FC = () => (
@@ -29,6 +30,7 @@ const AuthRoutes: React.FC = () => (
     <Auth.Screen name="UsersCard" component={CardUser} />
     <Auth.Screen name="Card" component={Card} />
     <Auth.Screen name="CardBill" component={CardBill} />
+    <Auth.Screen name="CardAlterBill" component={CardAlterBill} />
     <Auth.Screen name="CardAlter" component={CardAlter} />
   </Auth.Navigator>
 );

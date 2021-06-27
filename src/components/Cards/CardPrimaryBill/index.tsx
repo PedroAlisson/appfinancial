@@ -24,14 +24,14 @@ const CardPrimaryBill: React.FC = () => {
   const { bill } = route.params as Params;
   const id = bill.id;
 
-  const handleInvestDelete = useCallback(async () => {
+  const handleBillDelete = useCallback(async () => {
     const bills = await api.delete(`bills/${id}`);
     Alert.alert("Investimento deletado");
     navigate.navigate("Bill");
   }, []);
 
-  const handleInvestAlter = useCallback(() => {
-    navigate.navigate("CardAlter", { bill });
+  const handleBillAlter = useCallback(() => {
+    navigate.navigate("CardAlterBill", { bill });
   }, []);
 
   return (
@@ -46,16 +46,13 @@ const CardPrimaryBill: React.FC = () => {
         <ContainerButton>
           <Button
             style={{ backgroundColor: "orange" }}
-            onPress={handleInvestAlter}
+            onPress={handleBillAlter}
           >
             <Icon name="edit-2" size={20} color="#fff">
               <TextButton>Editar</TextButton>
             </Icon>
           </Button>
-          <Button
-            style={{ backgroundColor: "red" }}
-            onPress={handleInvestDelete}
-          >
+          <Button style={{ backgroundColor: "red" }} onPress={handleBillDelete}>
             <Icon name="trash" size={20} color="#fff">
               <TextButton>Excluir</TextButton>
             </Icon>

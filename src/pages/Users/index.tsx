@@ -50,7 +50,7 @@ const Users: React.FC = () => {
               onPress={handleUserEdit}
             >
               <Icon name="edit" size={20} color="#fff">
-                <Text>Infomações</Text>
+                <Text>Informações</Text>
               </Icon>
             </Button>
             <Button

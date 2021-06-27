@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { FlatList, ScrollView } from "react-native-gesture-handler";
+import { FlatList } from "react-native-gesture-handler";
 import Header from "../../components/Header";
 import api from "../../libs/api";
 import CardBill from "../../components/Cards/CardBill";
 
-import { Container, ViewBill } from "./styles";
-import { KeyboardAvoidingView, Platform } from "react-native";
+import { Container, ViewBill, ViewHeaderBill } from "./styles";
 import { useNavigation } from "@react-navigation/core";
 
 interface selectPropsBill {
@@ -45,26 +44,22 @@ const Bill: React.FC = () => {
   }
 
   return (
-    <KeyboardAvoidingView
-      style={{ flex: 1 }}
-      behavior={Platform.OS === "ios" ? "padding" : undefined}
-      enabled
-    >
-      <ScrollView keyboardShouldPersistTaps="handled">
-        <Container>
-          <Header> Escolha suas Depesas </Header>
-          <ViewBill>
-            <FlatList
-              data={bill}
-              keyExtractor={(item) => String(item.id)}
-              renderItem={({ item }) => (
-                <CardBill data={item} onPress={() => handleFindBill(item)} />
-              )}
-            />
-          </ViewBill>
-        </Container>
-      </ScrollView>
-    </KeyboardAvoidingView>
+    <>
+      <ViewHeaderBill>
+        <Header> Escolha suas Depesas </Header>
+      </ViewHeaderBill>
+      <Container>
+        <ViewBill>
+          <FlatList
+            data={bill}
+            keyExtractor={(item) => String(item.id)}
+            renderItem={({ item }) => (
+              <CardBill data={item} onPress={() => handleFindBill(item)} />
+            )}
+          />
+        </ViewBill>
+      </Container>
+    </>
   );
 };
 
