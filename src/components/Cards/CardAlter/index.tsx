@@ -52,7 +52,7 @@ const CardInvestAlter: React.FC = () => {
         //
 
         const { name, mes, value, date } = data;
-        
+
         const user = await AsyncStorage.getItem("@Financial:Id");
 
         const token = await AsyncStorage.getItem("@Financial:Token");

@@ -3,6 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
 import Home from "../pages/Home";
+import Users from "../pages/Users";
 import StackRoutesInvest from "./stackInvest.routes";
 import StackRoutesBill from "./stackBill.routes";
 import Card from "../components/Cards/CardPrimary";
@@ -24,7 +25,8 @@ const AuthRoutes: React.FC = () => (
     <Auth.Screen name="SignUp" component={SignUp} />
     <Auth.Screen name="Invest" component={StackRoutesInvest} />
     <Auth.Screen name="Bill" component={StackRoutesBill} />
-    <Auth.Screen name="Users" component={CardUser} />
+    <Auth.Screen name="Users" component={Users} />
+    <Auth.Screen name="UsersCard" component={CardUser} />
     <Auth.Screen name="Card" component={Card} />
     <Auth.Screen name="CardBill" component={CardBill} />
     <Auth.Screen name="CardAlter" component={CardAlter} />

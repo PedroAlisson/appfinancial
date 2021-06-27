@@ -74,9 +74,9 @@ const CardUsers: React.FC = () => {
         password: Yup.string().required("Senha Obrigatória"),
       });
 
-    //  await schema.validate(data, {
+      //  await schema.validate(data, {
       //  abortEarly: false,
-     // });
+      // });
 
       const { name, email, password } = data;
       const user_id = await AsyncStorage.getItem("@Financial:Id");
@@ -168,7 +168,7 @@ const CardUsers: React.FC = () => {
                 style={{ backgroundColor: "red" }}
                 onPress={handleUsersDelete}
               >
-                <Icon name="delete" size={20} color="#fff">
+                <Icon name="trash" size={20} color="#fff">
                   <Text> Deletar</Text>
                 </Icon>
               </Button>

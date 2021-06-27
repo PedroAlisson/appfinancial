@@ -56,7 +56,7 @@ const CardPrimaryBill: React.FC = () => {
             style={{ backgroundColor: "red" }}
             onPress={handleInvestDelete}
           >
-            <Icon name="delete" size={20} color="#fff">
+            <Icon name="trash" size={20} color="#fff">
               <TextButton>Excluir</TextButton>
             </Icon>
           </Button>
