@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import { KeyboardAvoidingView, Platform, View } from "react-native";
 import Icon from "react-native-vector-icons/Feather";
 import { ScrollView } from "react-native-gesture-handler";
@@ -14,7 +14,12 @@ import {
   Button,
   Text,
   ViewUser,
+  TextUser,
+  HeaderContainer,
 } from "./styles";
+import { useEffect } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import Header from "../../components/Header";
 
 interface UserPropsCreate {
   name: string;
@@ -22,7 +27,22 @@ interface UserPropsCreate {
   password: string;
 }
 
-const Users: React.FC = () => {
+const Users: React.FC = ({ children, ...rest }) => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    async function loadStorageData(): Promise<void> {
+      const token = await AsyncStorage.getItem("@Financial:Token");
+      const id = await AsyncStorage.getItem("@Financial:Id");
+      const name = await AsyncStorage.getItem("@Financial:Name");
+      if (token && id && name) {
+        setData(JSON.parse(name));
+      }
+    }
+
+    loadStorageData();
+  }, []);
+
   const navigation = useNavigation();
 
   const handleUserEdit = useCallback(async (data: UserPropsCreate) => {
@@ -32,17 +52,15 @@ const Users: React.FC = () => {
   const handleUsersDelete = useCallback(async () => {}, []);
 
   return (
-    <Container>
+    <Container {...rest}>
       <Image source={logoImg} />
-
-      <Title>Perfil do Usuário</Title>
+      <TextUser>{data} </TextUser>
 
       <KeyboardAvoidingView
         style={{ flex: 1 }}
         behavior={Platform.OS === "ios" ? "padding" : undefined}
         enabled
       >
-        <Title>Selecione a opção desejada</Title>
         <ScrollView keyboardShouldPersistTaps="handled" horizontal={true}>
           <ViewUser>
             <Button

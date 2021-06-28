@@ -36,7 +36,7 @@ const SignUp: React.FC = () => {
   const passwordInputRef = useRef<TextInput>(null);
   const navigation = useNavigation();
 
-  const handleSignUp = useCallback(async (data: UserPropsCreate) => {
+  const handleSignUp = useCallback(async (data: UserPropsCreate, { reset }) => {
     try {
       //const { name, email, password } = data;
 
@@ -60,9 +60,8 @@ const SignUp: React.FC = () => {
         password,
       });
 
-      console.log(users);
-
       Alert.alert("Usuário cadastrado com sucesso");
+      reset();
     } catch (error) {
       Alert.alert("Erro ao cadastrar usuário");
     }

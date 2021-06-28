@@ -26,24 +26,28 @@ const BillUp: React.FC = () => {
   const value = useRef<TextInput>(null);
   const mes = useRef<TextInput>(null);
 
-  const handleBillUp = useCallback(async (data: BillPropsRequest) => {
-    try {
-      const { name, date, status, value, mes } = data;
+  const handleBillUp = useCallback(
+    async (data: BillPropsRequest, { reset }) => {
+      try {
+        const { name, date, status, value, mes } = data;
 
-      const bill = await api.post("/bills", {
-        name,
-        date,
-        status,
-        value,
-        mes,
-      });
-      Alert.alert("Conta castrada com sucesso");
-      return;
-    } catch (error) {
-      Alert.alert(error);
-      return;
-    }
-  }, []);
+        const bill = await api.post("/bills", {
+          name,
+          date,
+          status,
+          value,
+          mes,
+        });
+        Alert.alert("Conta castrada com sucesso");
+        reset();
+        return;
+      } catch (error) {
+        Alert.alert(error);
+        return;
+      }
+    },
+    []
+  );
 
   return (
     <Container>

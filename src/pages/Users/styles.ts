@@ -11,10 +11,12 @@ export const Container = styled.View`
 `;
 
 export const Title = styled.Text`
+  margin-top: 30px;
   margin-bottom: 30px;
   font-size: 24px;
   color: #f4ede8;
   font-family: "RobotoSlab-Medium";
+  align-items: center;
 `;
 
 export const Image = styled.Image`
@@ -56,6 +58,13 @@ export const Text = styled.Text`
   color: #fff;
   font-size: 15px;
   font-family: "RobotoSlab-Regular";
+`;
+export const TextUser = styled.Text`
+  color: #fff;
+  font-size: 25px;
+  font-family: "RobotoSlab-Regular";
+
+  margin-bottom: 15px;
 `;
 
 export const ViewUser = styled.View`

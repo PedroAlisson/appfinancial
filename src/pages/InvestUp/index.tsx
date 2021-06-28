@@ -27,45 +27,49 @@ const InvestUp: React.FC = () => {
   const dateInputRef = useRef<TextInput>(null);
   const amountInputRef = useRef<TextInput>(null);
 
-  const handleInvestUp = useCallback(async (data: InvestPropsRequest) => {
-    try {
-      const schema = Yup.object().shape({
-        name: Yup.string().required("Nome Obrigatório"),
-        mes: Yup.string().required("Mes obrigatiorio"),
-        value: Yup.number().required("Valor Obrigatória"),
-        date: Yup.date().required("Data Obrigatória"),
-      });
+  const handleInvestUp = useCallback(
+    async (data: InvestPropsRequest, { reset }) => {
+      try {
+        const schema = Yup.object().shape({
+          name: Yup.string().required("Nome Obrigatório"),
+          mes: Yup.string().required("Mes obrigatiorio"),
+          value: Yup.number().required("Valor Obrigatória"),
+          date: Yup.date().required("Data Obrigatória"),
+        });
 
-      //   await schema.validate(data, {
-      //      abortEarly: false,
-      //   });
-      //
+        //   await schema.validate(data, {
+        //      abortEarly: false,
+        //   });
+        //
 
-      const { name, mes, value, date, amount } = data;
+        const { name, mes, value, date, amount } = data;
 
-      const user = await AsyncStorage.getItem("@Financial:Id");
+        const user = await AsyncStorage.getItem("@Financial:Id");
 
-      const token = await AsyncStorage.getItem("@Financial:Token");
-      console.log(token);
+        const token = await AsyncStorage.getItem("@Financial:Token");
+        console.log(token);
 
-      const user_id = JSON.parse(user);
+        const user_id = JSON.parse(user);
 
-      api.defaults.headers.Authorization = `Baerer ${token}`;
+        api.defaults.headers.Authorization = `Baerer ${token}`;
 
-      const invest = await api.post("/invest", {
-        name,
-        mes,
-        value,
-        date,
-        user_id,
-        amount,
-      });
+        const invest = await api.post("/invest", {
+          name,
+          mes,
+          value,
+          date,
+          user_id,
+          amount,
+        });
 
-      Alert.alert("Investimento cadastrado com sucesso");
-    } catch (error) {
-      Alert.alert("Erro ao cadastrar investimento");
-    }
-  }, []);
+        Alert.alert("Investimento cadastrado com sucesso");
+        reset();
+      } catch (error) {
+        Alert.alert("Erro ao cadastrar investimento");
+      }
+    },
+    []
+  );
 
   return (
     <>

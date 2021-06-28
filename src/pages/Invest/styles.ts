@@ -11,6 +11,4 @@ export const Container = styled.View`
 `;
 export const ViewInvest = styled.View`
   margin-top: 10px;
-  width: 100%;
-  padding: 15px;
 `;
