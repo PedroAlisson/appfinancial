@@ -36,36 +36,39 @@ const SignUp: React.FC = () => {
   const passwordInputRef = useRef<TextInput>(null);
   const navigation = useNavigation();
 
-  const handleSignUp = useCallback(async (data: UserPropsCreate, { reset }) => {
-    try {
-      //const { name, email, password } = data;
+  const handleSignUp = useCallback(
+    async (data: UserPropsCreate, { reset }) => {
+      try {
+        //const { name, email, password } = data;
 
-      const schema = Yup.object().shape({
-        name: Yup.string().required("Nome Obrigatório"),
-        email: Yup.string()
-          .required("E-mail  obrigatiorio")
-          .email("Digite um endereço de e-mail valido"),
-        password: Yup.string().required("Senha Obrigatória"),
-      });
+        const schema = Yup.object().shape({
+          name: Yup.string().required("Nome Obrigatório"),
+          email: Yup.string()
+            .required("E-mail  obrigatiorio")
+            .email("Digite um endereço de e-mail valido"),
+          password: Yup.string().required("Senha Obrigatória"),
+        });
 
-      //   await schema.validate(data, {
-      //     abortEarly: false,
-      //   });
+        //   await schema.validate(data, {
+        //     abortEarly: false,
+        //   });
 
-      const { name, email, password } = data;
+        const { name, email, password } = data;
 
-      const users = await api.post("/users", {
-        name,
-        email,
-        password,
-      });
+        const users = await api.post("/users", {
+          name,
+          email,
+          password,
+        });
 
-      Alert.alert("Usuário cadastrado com sucesso");
-      reset();
-    } catch (error) {
-      Alert.alert("Erro ao cadastrar usuário");
-    }
-  }, []);
+        Alert.alert("Usuário cadastrado com sucesso");
+        reset();
+      } catch (error) {
+        Alert.alert("Erro ao cadastrar usuário");
+      }
+    },
+    [navigation]
+  );
 
   return (
     <KeyboardAvoidingView

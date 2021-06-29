@@ -11,7 +11,6 @@ export const SelectView = styled.View`
 export const ViewContainer = styled.View`
   align-items: center;
   justify-content: space-between;
-  background-color: #fff;
   border-radius: 30px;
   padding: 10px;
 `;

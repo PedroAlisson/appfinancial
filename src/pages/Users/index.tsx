@@ -15,7 +15,7 @@ import {
   Text,
   ViewUser,
   TextUser,
-  HeaderContainer,
+  ViewLogOut,
 } from "./styles";
 import { useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -47,6 +47,16 @@ const Users: React.FC = ({ children, ...rest }) => {
 
   const handleUserEdit = useCallback(async (data: UserPropsCreate) => {
     navigation.navigate("UsersCard");
+  }, []);
+
+  const handleUsersLogout = useCallback(async ({ ...rest }) => {
+    await AsyncStorage.multiRemove([
+      "@Financial:Token",
+      "@Financial:Id",
+      "@Financial:Name",
+    ]);
+
+    navigation.navigate("SignIn");
   }, []);
 
   const handleUsersDelete = useCallback(async () => {}, []);
@@ -90,6 +100,17 @@ const Users: React.FC = ({ children, ...rest }) => {
           </ViewUser>
         </ScrollView>
       </KeyboardAvoidingView>
+      <ViewLogOut>
+        <Button
+          style={{ backgroundColor: "#6495ED" }}
+          onPress={handleUsersLogout}
+        >
+          <Icon name="log-out" size={20} color="black">
+            <Text>Sair</Text>
+          </Icon>
+        </Button>
+      </ViewLogOut>
+
       <BackToSignIn onPress={() => navigation.goBack()}>
         <Icon name="arrow-left" size={20} color="#fff" />
         <BackToSignInText>Voltar para Listagem</BackToSignInText>

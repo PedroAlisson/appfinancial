@@ -57,6 +57,8 @@ export const Button = styled.TouchableOpacity`
 export const Text = styled.Text`
   color: #fff;
   font-size: 15px;
+  margin-left: 10px;
+  padding-right: 2px;
   font-family: "RobotoSlab-Regular";
 `;
 export const TextUser = styled.Text`
@@ -71,5 +73,11 @@ export const ViewUser = styled.View`
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
+  margin-top: 20px;
+`;
+
+export const ViewLogOut = styled.View`
+  align-items: center;
+  justify-content: center;
   margin-top: 20px;
 `;

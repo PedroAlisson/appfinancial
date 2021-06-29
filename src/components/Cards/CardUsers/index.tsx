@@ -118,13 +118,12 @@ const CardUsers: React.FC = () => {
           <View>
             <Title>Perfil do Usuário</Title>
           </View>
-          <Form ref={formRef} onSubmit={handleUserAlter}>
+          <Form initialData={user} ref={formRef} onSubmit={handleUserAlter}>
             <Input
               autoCapitalize="words"
               name="name"
               icon="user"
               placeholder="Nome"
-              defaultValue={user.name}
               returnKeyType="next"
               onSubmitEditing={() => {
                 emailInputRef.current?.focus();
@@ -135,7 +134,6 @@ const CardUsers: React.FC = () => {
               keyboardType="email-address"
               autoCorrect={false}
               autoCapitalize="none"
-              defaultValue={user.email}
               name="email"
               icon="mail"
               placeholder="E-mail"
@@ -148,7 +146,6 @@ const CardUsers: React.FC = () => {
               ref={passwordInputRef}
               secureTextEntry
               name="password"
-              defaultValue={user.password}
               icon="lock"
               placeholder="Senha"
               textContentType="newPassword"

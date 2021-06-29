@@ -45,7 +45,6 @@ const Invest: React.FC = () => {
       <Container>
         <ViewInvest>
           <FlatList
-            numColumns={2}
             data={invest}
             keyExtractor={(item) => String(item.id)}
             renderItem={({ item }) => (
