@@ -20,18 +20,18 @@ interface Params {
 }
 const CardPrimaryBill: React.FC = () => {
   const route = useRoute();
-  const navigate = useNavigation();
+  const navigation = useNavigation();
   const { bill } = route.params as Params;
   const id = bill.id;
 
   const handleBillDelete = useCallback(async () => {
     const bills = await api.delete(`bills/${id}`);
     Alert.alert("Investimento deletado");
-    navigate.navigate("Bill");
+    navigation.navigate("Home");
   }, []);
 
   const handleBillAlter = useCallback(() => {
-    navigate.navigate("CardAlterBill", { bill });
+    navigation.navigate("CardAlterBill", { bill });
   }, []);
 
   return (

@@ -71,6 +71,7 @@ const CardBillAlter: React.FC = () => {
         });
 
         Alert.alert("Despesas Alterada com sucesso");
+        navigate.navigate("Home");
       } catch (error) {
         Alert.alert("Erro ao Alterar Despesas");
       }

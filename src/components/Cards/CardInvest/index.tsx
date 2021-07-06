@@ -17,6 +17,7 @@ const CardInvest: React.FC<selectPropsInvest> = ({ data, ...rest }) => {
             Data: {format(new Date(data.date), "MM/dd/yyy")}
           </TextInvest>
           <TextInvest>Mês: {data.mes}</TextInvest>
+          <TextInvest>Quantidade: {data.amount}</TextInvest>
           <TextInvest>Valor: {data.value}</TextInvest>
         </ViewContainer>
       </SelectView>

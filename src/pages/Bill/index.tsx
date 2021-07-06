@@ -26,7 +26,6 @@ const Bill: React.FC = () => {
   useEffect(() => {
     async function findBills() {
       const token = await AsyncStorage.getItem("@Financial:Token");
-
       api.defaults.headers.Authorization = `Baered ${token}`;
       const bills = await api.get("bills");
       const resultsBill = bills.data;

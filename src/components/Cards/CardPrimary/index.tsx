@@ -20,18 +20,19 @@ interface Params {
 }
 const CardPrimary: React.FC = () => {
   const route = useRoute();
-  const navigate = useNavigation();
+  const navigation = useNavigation();
   const { invest } = route.params as Params;
   const id = invest.id;
 
   const handleInvestDelete = useCallback(async () => {
     const invest = await api.delete(`invest/${id}`);
     Alert.alert("Investimento deletado");
-    navigate.navigate("Invest");
+
+    navigation.navigate("Home");
   }, []);
 
   const handleInvestAlter = useCallback(() => {
-    navigate.navigate("CardAlter", { invest });
+    navigation.navigate("CardAlter", { invest });
   }, []);
 
   return (
@@ -41,6 +42,7 @@ const CardPrimary: React.FC = () => {
         <Text>Nome: {invest.name}</Text>
         <Text>Data: {format(new Date(invest.date), "MM/dd/yyy")}</Text>
         <Text>Mês: {invest.mes}</Text>
+        <Text>Quantidade: {invest.amount}</Text>
         <Text>Valor: {invest.value}</Text>
         <ContainerButton>
           <Button

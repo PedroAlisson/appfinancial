@@ -17,9 +17,34 @@ export const TouchableOpacity = styled.TouchableOpacity`
   margin-top: 20px;
 `;
 
+export const ContainerTotal = styled.View`
+  align-items: center;
+  margin-top: 100px;
+  width: 100%;
+`;
+
+export const CardTotal = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 10px;
+  margin-left: 10px;
+`;
+
+export const ContainerMenuTotal = styled.View`
+  width: 90%;
+  height: 100px;
+  background-color: gray;
+  border-radius: 20px;
+  margin-top: 40px;
+`;
+
 export const ContainerMenu = styled.View`
   flex-direction: row;
   align-items: center;
+  margin-top: 10px;
+  justify-content: space-between;
 `;
 
 export const Text = styled.Text`
@@ -31,13 +56,23 @@ export const Text = styled.Text`
   align-items: center;
 `;
 
+export const TextTotal = styled.Text`
+  color: #fff;
+  font-family: "RobotoSlab-Regular";
+  font-size: 15px;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  align-items: center;
+`;
+
 export const Icon = styled(FeatherIcon)`
   flex-direction: row;
-  text-align: center;
+  align-items: center;
+  justify-content: space-between;
   margin-top: 20px;
   color: black;
   background-color: gold;
-  border-radius: 10px;
+  border-radius: 5px;
 `;
 
 export const Image = styled.Image`

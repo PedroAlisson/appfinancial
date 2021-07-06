@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import { FormHandles } from "@unform/core";
 import { Form } from "@unform/mobile";
 import React, { useCallback, useRef } from "react";
@@ -26,6 +27,8 @@ const BillUp: React.FC = () => {
   const value = useRef<TextInput>(null);
   const mes = useRef<TextInput>(null);
 
+  const navigation = useNavigation();
+
   const handleBillUp = useCallback(
     async (data: BillPropsRequest, { reset }) => {
       try {
@@ -40,7 +43,7 @@ const BillUp: React.FC = () => {
         });
         Alert.alert("Conta castrada com sucesso");
         reset();
-        return;
+        navigation.navigate("Home");
       } catch (error) {
         Alert.alert(error);
         return;
@@ -103,7 +106,7 @@ const BillUp: React.FC = () => {
                 placeholder="Valor"
                 returnKeyType="next"
                 onSubmitEditing={() => {
-                  value.current?.focus();
+                  mes.current?.focus();
                 }}
               />
               <Input

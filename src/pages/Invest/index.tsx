@@ -21,16 +21,18 @@ const Invest: React.FC = () => {
       const token = await AsyncStorage.getItem("@Financial:Token");
 
       api.defaults.headers.Authorization = `Baered ${token}`;
-      const res = await api.get("invest");
-      const resultsInvest = res.data;
+      const response = await api.get("invest");
+      const resultsInvest = response.data;
+      //  const investimento = [];
 
       if (resultsInvest) {
+        //   investimento.push([...resultsInvest, invest]);
+        //   console.log(investimento);
         setInvest(resultsInvest);
       }
       return;
     }
     findInvest();
-    return;
   }, []);
 
   function handleFindInvest(invest: selectPropsInvest) {

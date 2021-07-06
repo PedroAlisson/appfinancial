@@ -70,8 +70,9 @@ const CardInvestAlter: React.FC = () => {
         });
 
         Alert.alert("Investimento Alterado com sucesso");
+        navigate.navigate("Home");
       } catch (error) {
-        Alert.alert("Erro ao cadastrar investimento");
+        Alert.alert("Erro ao Alterar investimento");
       }
     },
     []
@@ -90,12 +91,15 @@ const CardInvestAlter: React.FC = () => {
           enabled
         >
           <ScrollView keyboardShouldPersistTaps="handled">
-            <Form ref={formRef} onSubmit={handleInvestAlter}>
+            <Form
+              initialData={invest}
+              ref={formRef}
+              onSubmit={handleInvestAlter}
+            >
               <Input
                 autoCapitalize="words"
                 name="name"
                 icon="info"
-                defaultValue={invest.name}
                 returnKeyType="next"
                 onSubmitEditing={() => {
                   mesInputRef.current?.focus();
@@ -107,7 +111,6 @@ const CardInvestAlter: React.FC = () => {
                 autoCapitalize="none"
                 name="mes"
                 icon="calendar"
-                defaultValue={invest.mes}
                 placeholder="Mes"
                 returnKeyType="next"
                 onSubmitEditing={() => {
@@ -120,7 +123,6 @@ const CardInvestAlter: React.FC = () => {
                 autoCapitalize="none"
                 name="amount"
                 icon="dollar-sign"
-                defaultValue={invest.value}
                 placeholder="Valor"
                 returnKeyType="next"
                 onSubmitEditing={() => {
@@ -133,7 +135,6 @@ const CardInvestAlter: React.FC = () => {
                 autoCapitalize="none"
                 name="value"
                 icon="dollar-sign"
-                defaultValue={invest.value}
                 placeholder="Valor"
                 returnKeyType="next"
                 onSubmitEditing={() => {

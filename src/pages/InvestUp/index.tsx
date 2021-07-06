@@ -11,6 +11,7 @@ import { Form } from "@unform/mobile";
 import { FormHandles } from "@unform/core";
 import Input from "../../components/Input";
 import * as Yup from "yup";
+import { useNavigation } from "@react-navigation/native";
 
 interface InvestPropsRequest {
   name: string;
@@ -18,6 +19,7 @@ interface InvestPropsRequest {
   value: number;
   date: Date;
   user_id: string;
+  amount: string;
 }
 
 const InvestUp: React.FC = () => {
@@ -26,6 +28,8 @@ const InvestUp: React.FC = () => {
   const valueInputRef = useRef<TextInput>(null);
   const dateInputRef = useRef<TextInput>(null);
   const amountInputRef = useRef<TextInput>(null);
+
+  const navigation = useNavigation();
 
   const handleInvestUp = useCallback(
     async (data: InvestPropsRequest, { reset }) => {
@@ -64,6 +68,7 @@ const InvestUp: React.FC = () => {
 
         Alert.alert("Investimento cadastrado com sucesso");
         reset();
+        navigation.navigate("Home");
       } catch (error) {
         Alert.alert("Erro ao cadastrar investimento");
       }
