@@ -28,7 +28,7 @@ const CardPrimary: React.FC = () => {
     const invest = await api.delete(`invest/${id}`);
     Alert.alert("Investimento deletado");
 
-    navigation.navigate("Home");
+    navigation.navigate("Investimentos");
   }, []);
 
   const handleInvestAlter = useCallback(() => {

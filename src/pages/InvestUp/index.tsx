@@ -49,10 +49,7 @@ const InvestUp: React.FC = () => {
         const { name, mes, value, date, amount } = data;
 
         const user = await AsyncStorage.getItem("@Financial:Id");
-
         const token = await AsyncStorage.getItem("@Financial:Token");
-        console.log(token);
-
         const user_id = JSON.parse(user);
 
         api.defaults.headers.Authorization = `Baerer ${token}`;
@@ -68,7 +65,7 @@ const InvestUp: React.FC = () => {
 
         Alert.alert("Investimento cadastrado com sucesso");
         reset();
-        navigation.navigate("Home");
+        navigation.navigate("Investimentos");
       } catch (error) {
         Alert.alert("Erro ao cadastrar investimento");
       }

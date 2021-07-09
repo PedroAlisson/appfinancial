@@ -7,6 +7,7 @@ import CardBill from "../../components/Cards/CardBill";
 
 import { Container, ViewBill, ViewHeaderBill } from "./styles";
 import { useNavigation } from "@react-navigation/core";
+import { useFocusEffect } from "@react-navigation/native";
 
 interface selectPropsBill {
   data: {
@@ -23,7 +24,7 @@ const Bill: React.FC = () => {
   const [bill, setBill] = useState([]);
   const navigation = useNavigation();
 
-  useEffect(() => {
+  useFocusEffect(() => {
     async function findBills() {
       const token = await AsyncStorage.getItem("@Financial:Token");
       api.defaults.headers.Authorization = `Baered ${token}`;
@@ -36,7 +37,7 @@ const Bill: React.FC = () => {
       return;
     }
     findBills();
-  }, []);
+  });
 
   function handleFindBill(bill: selectPropsBill) {
     navigation.navigate("CardBill", { bill });

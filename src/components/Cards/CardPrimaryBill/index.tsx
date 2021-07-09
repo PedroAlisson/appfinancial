@@ -27,7 +27,7 @@ const CardPrimaryBill: React.FC = () => {
   const handleBillDelete = useCallback(async () => {
     const bills = await api.delete(`bills/${id}`);
     Alert.alert("Investimento deletado");
-    navigation.navigate("Home");
+    navigation.navigate("Contas");
   }, []);
 
   const handleBillAlter = useCallback(() => {

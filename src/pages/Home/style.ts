@@ -3,81 +3,58 @@ import FeatherIcon from "react-native-vector-icons/Feather";
 
 export const Container = styled.View`
   flex: 1;
-  align-items: center;
 `;
 
-export const TouchableOpacity = styled.TouchableOpacity`
-  width: 120px;
-  height: 80px;
-  background-color: gray;
-  border-radius: 20px;
-  margin-left: 10px;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 20px;
-`;
-
-export const ContainerTotal = styled.View`
-  align-items: center;
-  margin-top: 100px;
-  width: 100%;
-`;
-
-export const CardTotal = styled.View`
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  align-items: center;
-  padding-right: 10px;
-  margin-left: 10px;
-`;
-
-export const ContainerMenuTotal = styled.View`
+export const Card = styled.View`
+  background-color: white;
   width: 90%;
-  height: 100px;
-  background-color: gray;
-  border-radius: 20px;
-  margin-top: 40px;
+  margin-left: 15px;
+  margin-bottom: 30px;
+  border-radius: 10px;
 `;
 
-export const ContainerMenu = styled.View`
-  flex-direction: row;
-  align-items: center;
-  margin-top: 10px;
-  justify-content: space-between;
+export const CardHome = styled.View`
+  padding: 15px;
 `;
 
 export const Text = styled.Text`
-  color: #fff;
-  font-family: "RobotoSlab-Regular";
-  font-size: 15px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  align-items: center;
+  font-size: 20px;
+  padding: 5px;
+  text-align: center;
+  font-family: "RobotoSlab-Medium";
 `;
 
-export const TextTotal = styled.Text`
-  color: #fff;
+export const TextInformation = styled.Text`
+  font-size: 18px;
+  padding: 5px;
   font-family: "RobotoSlab-Regular";
-  font-size: 15px;
-  margin-top: 20px;
-  margin-bottom: 5px;
-  align-items: center;
+  margin-top: 10px;
 `;
 
 export const Icon = styled(FeatherIcon)`
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
   margin-top: 20px;
+  width: 50px;
   color: black;
   background-color: gold;
   border-radius: 5px;
 `;
 
-export const Image = styled.Image`
-  width: 100%;
-  background-color: red;
-  border-radius: 50px;
-  padding-right: 20px;
+export const TextButton = styled.Text`
+  color: blue;
+  align-items: center;
+  margin-top: 5px;
+  font-size: 20px;
+  font-family: "RobotoSlab-Medium";
+`;
+
+export const TouchableOpacity = styled.TouchableOpacity`
+  border-radius: 10px;
+  margin-right: 2px;
+  width: 150px;
+  height: 40px;
+  margin-top: 10px;
+  border: 2px;
+  border-color: blue;
+  align-items: center;
+  background-color: white;
 `;

@@ -39,7 +39,6 @@ const Users: React.FC = ({ children, ...rest }) => {
         setData(JSON.parse(name));
       }
     }
-
     loadStorageData();
   }, []);
 
@@ -83,7 +82,7 @@ const Users: React.FC = ({ children, ...rest }) => {
             </Button>
             <Button
               style={{ backgroundColor: "orange" }}
-              onPress={() => formRef.current?.submitForm()}
+              onPress={() => console.log("")}
             >
               <Icon name="edit-2" size={20} color="#fff">
                 <Text>Foto</Text>

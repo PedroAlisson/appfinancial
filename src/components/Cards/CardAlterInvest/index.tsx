@@ -70,7 +70,7 @@ const CardInvestAlter: React.FC = () => {
         });
 
         Alert.alert("Investimento Alterado com sucesso");
-        navigate.navigate("Home");
+        navigate.navigate("Investimentos");
       } catch (error) {
         Alert.alert("Erro ao Alterar investimento");
       }

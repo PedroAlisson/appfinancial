@@ -173,11 +173,6 @@ const CardUsers: React.FC = () => {
                 </Button>
               </ViewUser>
             </Form>
-
-            <BackToSignIn onPress={() => navigation.goBack()}>
-              <Icon name="arrow-left" size={20} color="#fff" />
-              <BackToSignInText>Voltar para Listagem</BackToSignInText>
-            </BackToSignIn>
           </Container>
         </ScrollView>
       </KeyboardAvoidingView>

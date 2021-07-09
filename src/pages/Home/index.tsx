@@ -3,20 +3,21 @@ import React, { Children, useEffect } from "react";
 import { RectButtonProperties } from "react-native-gesture-handler";
 import Header from "../../components/Header";
 import {
-  TouchableOpacity,
-  Text,
-  ContainerMenu,
-  Icon,
-  Image,
   Container,
-  ContainerMenuTotal,
-  ContainerTotal,
-  CardTotal,
-  TextTotal,
+  Card,
+  Text,
+  Icon,
+  TouchableOpacity,
+  CardHome,
+  TextButton,
+  TextInformation,
 } from "./style";
 import api from "../../libs/api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useState } from "react";
+import { useCallback } from "react";
+import { useFocusEffect } from "@react-navigation/native";
+import { KeyboardAvoidingView, Platform, ScrollView } from "react-native";
 
 interface RectProps extends RectButtonProperties {}
 interface TotalProps {
@@ -30,7 +31,7 @@ const Home: React.FC<RectProps> = ({ children, ...rest }) => {
 
   const [bill, setBill] = useState(null);
 
-  useEffect(() => {
+  useFocusEffect(() => {
     async function findTotal() {
       const token = await AsyncStorage.getItem("@Financial:Token");
       api.defaults.headers.Authorization = `Baered ${token}`;
@@ -44,43 +45,75 @@ const Home: React.FC<RectProps> = ({ children, ...rest }) => {
       }
     }
     findTotal();
-  }, []);
+  });
 
   return (
     <Container>
       <Header></Header>
-
-      <ContainerMenu>
-        <TouchableOpacity>
-          <Icon name="home" size={25} color="#fff"></Icon>
-          <Text>Home</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("Invest")}>
-          <Icon name="repeat" size={25} color="#fff"></Icon>
-          <Text>Investimentos</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("Bill")}>
-          <Icon name="dollar-sign" size={25} color="#fff"></Icon>
-          <Text>Contas</Text>
-        </TouchableOpacity>
-      </ContainerMenu>
-
-      <ContainerTotal>
-        <Text>Visão geral Investimentos e Contas Cadastradas</Text>
-        <ContainerMenuTotal>
-          <CardTotal>
-            <Icon name="repeat" size={25} color="#fff"></Icon>
-            <TextTotal>Investimentos</TextTotal>
-            <TextTotal>Total: {invest}</TextTotal>
-          </CardTotal>
-          <CardTotal>
-            <Icon name="dollar-sign" size={25} color="#fff"></Icon>
-            <TextTotal>Contas</TextTotal>
-
-            <TextTotal> Total: {bill}</TextTotal>
-          </CardTotal>
-        </ContainerMenuTotal>
-      </ContainerTotal>
+      <ScrollView>
+        <Card>
+          <CardHome>
+            <Text>Total de Investimento</Text>
+            <TextInformation>
+              {" "}
+              <Icon name="repeat" size={25} color="#fff">
+                {invest}
+              </Icon>{" "}
+              Registros
+            </TextInformation>
+            <TextInformation>
+              {" "}
+              <Icon name="dollar-sign" size={25} color="#fff">
+                {invest}
+              </Icon>{" "}
+              Investido
+            </TextInformation>
+          </CardHome>
+        </Card>
+        <Card>
+          <CardHome>
+            <Text>Total de Contas</Text>
+            <TextInformation>
+              {" "}
+              <Icon name="repeat" size={25} color="#fff">
+                {bill}
+              </Icon>{" "}
+              Registros
+            </TextInformation>
+            <TextInformation>
+              {" "}
+              <Icon name="dollar-sign" size={25} color="#fff">
+                {bill}
+              </Icon>{" "}
+              Investido
+            </TextInformation>
+          </CardHome>
+        </Card>
+        <Card>
+          <CardHome>
+            <Text>Investimento</Text>
+            <TextInformation>
+              àrea destinada para investimentos, caso queira cadastrar ou
+              visualizar seus investimentos basta clicar no botão investimentos.
+            </TextInformation>
+            <TouchableOpacity>
+              <TextButton> Investimentos</TextButton>
+            </TouchableOpacity>
+          </CardHome>
+        </Card>
+        <Card>
+          <CardHome>
+            <Text>Contas</Text>
+            <TextInformation>
+              àrea destinada para contas, caso queira cadastrar ou visualizar
+              suas contas basta clicar no botão contas.
+            </TextInformation>
+            <TouchableOpacity>
+              <TextButton> Contas</TextButton>
+            </TouchableOpacity>
+          </CardHome>
+        </Card>
+      </ScrollView>
     </Container>
   );
 };
