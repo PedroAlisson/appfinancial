@@ -9,7 +9,7 @@ import Header from "../../components/Header";
 import Input from "../../components/Input";
 import api from "../../libs/api";
 
-import { Container } from "./style";
+import { Container, ViewHeader } from "./style";
 
 interface BillPropsRequest {
   name: string;
@@ -53,8 +53,11 @@ const BillUp: React.FC = () => {
   );
 
   return (
-    <Container>
-      <Header>Cadastre suas despesas </Header>
+    <>
+      <ViewHeader>
+        <Header>Cadastre suas despesas </Header>
+      </ViewHeader>
+
       <Container>
         <KeyboardAvoidingView
           style={{ flex: 1 }}
@@ -124,7 +127,7 @@ const BillUp: React.FC = () => {
           </ScrollView>
         </KeyboardAvoidingView>
       </Container>
-    </Container>
+    </>
   );
 };
 

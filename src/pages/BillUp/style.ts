@@ -7,3 +7,7 @@ export const Container = styled.View`
   padding: 12px;
   background-color: #312e38;
 `;
+
+export const ViewHeader = styled.View`
+  background-color: #312e38;
+`;

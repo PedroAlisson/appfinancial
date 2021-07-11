@@ -8,7 +8,7 @@ export const Container = styled.View`
 export const Card = styled.View`
   background-color: white;
   width: 90%;
-  margin-left: 15px;
+  margin-left: 20px;
   margin-bottom: 30px;
   border-radius: 10px;
 `;

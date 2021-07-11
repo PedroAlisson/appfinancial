@@ -12,7 +12,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/core";
 
-const Header: React.FC = ({ children, ...rest }) => {
+const HeaderBack: React.FC = ({ children, ...rest }) => {
   const [data, setData] = useState([]);
 
   const navigation = useNavigation();
@@ -37,9 +37,9 @@ const Header: React.FC = ({ children, ...rest }) => {
   return (
     <View>
       <Container {...rest}>
-        <Text>Ola, {data} </Text>
+        <Text>Olaaaa, {data} </Text>
         <TouchableOpacity onPress={handleUser}>
-          <Icon name="settings" size={40} color="#fff"></Icon>
+          <Icon name="arrow-left" size={40} color="#fff"></Icon>
         </TouchableOpacity>
       </Container>
       <ViewSelectInvest>
@@ -49,4 +49,4 @@ const Header: React.FC = ({ children, ...rest }) => {
   );
 };
 
-export default Header;
+export default HeaderBack;

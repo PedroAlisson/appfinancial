@@ -10,7 +10,6 @@ export const Container = styled.View`
   background-color: #312e38;
 `;
 export const ViewInvest = styled.View`
-  margin-top: 10px;
   width: 100%;
   padding: 15px;
 `;

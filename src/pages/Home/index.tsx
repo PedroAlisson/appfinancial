@@ -30,6 +30,9 @@ const Home: React.FC<RectProps> = ({ children, ...rest }) => {
   const [invest, setInvest] = useState(null);
 
   const [bill, setBill] = useState(null);
+  const [investTotal, setInvestTotal] = useState(null);
+
+  const [billTotal, setBillTotal] = useState(null);
 
   useFocusEffect(() => {
     async function findTotal() {
@@ -39,13 +42,24 @@ const Home: React.FC<RectProps> = ({ children, ...rest }) => {
       const results = await api.get<TotalProps>("count");
 
       if (results) {
-        const { resultsBill, resultsInvest } = results.data;
+        const { resultsBill, resultsInvest, SumTotalInvest, SumTotalBill } =
+          results.data;
         setBill(resultsBill);
         setInvest(resultsInvest);
+        setInvestTotal(SumTotalInvest);
+        setBillTotal(SumTotalBill);
       }
     }
     findTotal();
   });
+
+  const navigationInvest = useCallback(() => {
+    navigation.navigate("Invest");
+  }, []);
+
+  const navigationBill = useCallback(() => {
+    navigation.navigate("Bill");
+  }, []);
 
   return (
     <Container>
@@ -53,7 +67,7 @@ const Home: React.FC<RectProps> = ({ children, ...rest }) => {
       <ScrollView>
         <Card>
           <CardHome>
-            <Text>Total de Investimento</Text>
+            <Text>Total de Investimentos</Text>
             <TextInformation>
               {" "}
               <Icon name="repeat" size={25} color="#fff">
@@ -64,7 +78,7 @@ const Home: React.FC<RectProps> = ({ children, ...rest }) => {
             <TextInformation>
               {" "}
               <Icon name="dollar-sign" size={25} color="#fff">
-                {invest}
+                {investTotal}
               </Icon>{" "}
               Investido
             </TextInformation>
@@ -83,9 +97,9 @@ const Home: React.FC<RectProps> = ({ children, ...rest }) => {
             <TextInformation>
               {" "}
               <Icon name="dollar-sign" size={25} color="#fff">
-                {bill}
+                {billTotal}
               </Icon>{" "}
-              Investido
+              Contas
             </TextInformation>
           </CardHome>
         </Card>
@@ -96,7 +110,7 @@ const Home: React.FC<RectProps> = ({ children, ...rest }) => {
               àrea destinada para investimentos, caso queira cadastrar ou
               visualizar seus investimentos basta clicar no botão investimentos.
             </TextInformation>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={navigationInvest}>
               <TextButton> Investimentos</TextButton>
             </TouchableOpacity>
           </CardHome>
@@ -108,7 +122,7 @@ const Home: React.FC<RectProps> = ({ children, ...rest }) => {
               àrea destinada para contas, caso queira cadastrar ou visualizar
               suas contas basta clicar no botão contas.
             </TextInformation>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={navigationBill}>
               <TextButton> Contas</TextButton>
             </TouchableOpacity>
           </CardHome>
