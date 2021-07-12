@@ -1,14 +1,13 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useCallback, useEffect, useState } from "react";
-import Header from "../../components/Header";
 import api from "../../libs/api";
 
 import { Container, ViewInvest, ViewHeaderInvest } from "./styles";
 import { useNavigation } from "@react-navigation/core";
 import { FlatList } from "react-native-gesture-handler";
 import CardInvest from "../../components/Cards/CardInvest";
-import Button from "../../components/Button";
 import { useFocusEffect } from "@react-navigation/native";
+import HeaderBack from "../../components/HeaderBack";
 
 interface selectPropsInvest {
   data: { id: string; name: string; mes: string; value: number; date: Date };
@@ -43,7 +42,7 @@ const Invest: React.FC = () => {
   return (
     <>
       <ViewHeaderInvest>
-        <Header>Selecione seu Investimento </Header>
+        <HeaderBack>Selecione seu Investimento </HeaderBack>
       </ViewHeaderInvest>
       <Container>
         <ViewInvest>

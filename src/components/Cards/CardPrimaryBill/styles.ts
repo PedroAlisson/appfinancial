@@ -2,7 +2,6 @@ import styled from "styled-components/native";
 import FeatherIcon from "react-native-vector-icons/Feather";
 export const Container = styled.View`
   flex: 1;
-  align-items: center;
 `;
 
 export const ContainerBillSelect = styled.View`
@@ -10,6 +9,7 @@ export const ContainerBillSelect = styled.View`
   padding: 20px;
   background-color: #fff;
   margin-top: 30px;
+  margin-left: 20px;
   align-items: center;
   border-radius: 10px;
 `;
@@ -17,9 +17,9 @@ export const ContainerBillSelect = styled.View`
 export const Text = styled.Text`
   font-size: 20px;
   color: gray;
-  line-height: 40px;
   font-family: "RobotoSlab-Regular";
   align-items: center;
+  padding: 5px;
 `;
 
 export const TextButton = styled.Text`

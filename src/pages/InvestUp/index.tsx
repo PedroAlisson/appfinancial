@@ -12,6 +12,7 @@ import { FormHandles } from "@unform/core";
 import Input from "../../components/Input";
 import * as Yup from "yup";
 import { useNavigation } from "@react-navigation/native";
+import HeaderBack from "../../components/HeaderBack";
 
 interface InvestPropsRequest {
   name: string;
@@ -76,7 +77,7 @@ const InvestUp: React.FC = () => {
   return (
     <>
       <ViewHeader>
-        <Header>Cadastre seu Investimento </Header>
+        <HeaderBack>Cadastre seu Investimento </HeaderBack>
       </ViewHeader>
 
       <Container>

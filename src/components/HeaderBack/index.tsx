@@ -37,9 +37,12 @@ const HeaderBack: React.FC = ({ children, ...rest }) => {
   return (
     <View>
       <Container {...rest}>
-        <Text>Olaaaa, {data} </Text>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Icon name="arrow-left" size={30} color="#fff"></Icon>
+        </TouchableOpacity>
+        <Text>Olá, {data} </Text>
         <TouchableOpacity onPress={handleUser}>
-          <Icon name="arrow-left" size={40} color="#fff"></Icon>
+          <Icon name="settings" size={30} color="#fff"></Icon>
         </TouchableOpacity>
       </Container>
       <ViewSelectInvest>

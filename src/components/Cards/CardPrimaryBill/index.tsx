@@ -4,6 +4,7 @@ import React, { useCallback } from "react";
 import { Alert } from "react-native";
 import api from "../../../libs/api";
 import Header from "../../Header";
+import HeaderBack from "../../HeaderBack";
 
 import {
   Container,
@@ -36,7 +37,7 @@ const CardPrimaryBill: React.FC = () => {
 
   return (
     <Container>
-      <Header> Investimento Selecionado </Header>
+      <HeaderBack> Investimento Selecionado </HeaderBack>
       <ContainerBillSelect>
         <Text>Nome: {bill.name}</Text>
         <Text>Data: {format(new Date(bill.date), "MM/dd/yyy")}</Text>

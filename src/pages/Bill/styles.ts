@@ -11,7 +11,7 @@ export const Container = styled.View`
 `;
 
 export const ViewBill = styled.View`
-  margin-top: 10px;
+  margin-top: 20px;
   width: 100%;
   padding: 15px;
 `;

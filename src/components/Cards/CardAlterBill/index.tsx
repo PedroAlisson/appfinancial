@@ -13,6 +13,7 @@ import Button from "../../Button";
 import { Form } from "@unform/mobile";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { format } from "date-fns";
+import HeaderBack from "../../HeaderBack";
 
 interface Params {
   invest: Object;
@@ -82,7 +83,7 @@ const CardBillAlter: React.FC = () => {
   return (
     <>
       <ViewHeader>
-        <Header>Altere suas Depesas </Header>
+        <HeaderBack>Altere suas Depesas </HeaderBack>
       </ViewHeader>
 
       <Container>

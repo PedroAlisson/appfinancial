@@ -8,6 +8,7 @@ import CardBill from "../../components/Cards/CardBill";
 import { Container, ViewBill, ViewHeaderBill } from "./styles";
 import { useNavigation } from "@react-navigation/core";
 import { useFocusEffect } from "@react-navigation/native";
+import HeaderBack from "../../components/HeaderBack";
 
 interface selectPropsBill {
   data: {
@@ -46,7 +47,7 @@ const Bill: React.FC = () => {
   return (
     <>
       <ViewHeaderBill>
-        <Header> Escolha suas Depesas </Header>
+        <HeaderBack> Escolha suas Depesas </HeaderBack>
       </ViewHeaderBill>
       <Container>
         <ViewBill>

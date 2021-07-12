@@ -13,6 +13,7 @@ import Button from "../../Button";
 import { Form } from "@unform/mobile";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { format } from "date-fns";
+import HeaderBack from "../../HeaderBack";
 
 interface Params {
   invest: Object;
@@ -22,6 +23,7 @@ interface InvestPropsAlterRequest {
   name: string;
   mes: string;
   value: number;
+  amount: number;
   date: Date;
   user_id: string;
 }
@@ -51,7 +53,7 @@ const CardInvestAlter: React.FC = () => {
         //   });
         //
 
-        const { name, mes, value, date } = data;
+        const { name, mes, value, date, amount } = data;
 
         const user = await AsyncStorage.getItem("@Financial:Id");
 
@@ -67,6 +69,7 @@ const CardInvestAlter: React.FC = () => {
           value,
           date,
           user_id,
+          amount,
         });
 
         Alert.alert("Investimento Alterado com sucesso");
@@ -81,7 +84,7 @@ const CardInvestAlter: React.FC = () => {
   return (
     <>
       <ViewHeader>
-        <Header>Altere seu Investimento </Header>
+        <HeaderBack>Altere seu Investimento </HeaderBack>
       </ViewHeader>
 
       <Container>
@@ -123,7 +126,7 @@ const CardInvestAlter: React.FC = () => {
                 autoCapitalize="none"
                 name="amount"
                 icon="dollar-sign"
-                placeholder="Valor"
+                placeholder="Quantidade"
                 returnKeyType="next"
                 onSubmitEditing={() => {
                   valueInputRef.current?.focus();

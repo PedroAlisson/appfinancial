@@ -6,6 +6,7 @@ import { Alert, KeyboardAvoidingView, Platform } from "react-native";
 import { ScrollView, TextInput } from "react-native-gesture-handler";
 import Button from "../../components/Button";
 import Header from "../../components/Header";
+import HeaderBack from "../../components/HeaderBack";
 import Input from "../../components/Input";
 import api from "../../libs/api";
 
@@ -55,7 +56,7 @@ const BillUp: React.FC = () => {
   return (
     <>
       <ViewHeader>
-        <Header>Cadastre suas despesas </Header>
+        <HeaderBack>Cadastre suas despesas </HeaderBack>
       </ViewHeader>
 
       <Container>

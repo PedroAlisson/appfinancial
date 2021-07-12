@@ -37,7 +37,7 @@ const Header: React.FC = ({ children, ...rest }) => {
   return (
     <View>
       <Container {...rest}>
-        <Text>Ola, {data} </Text>
+        <Text>Olà, {data} </Text>
         <TouchableOpacity onPress={handleUser}>
           <Icon name="settings" size={40} color="#fff"></Icon>
         </TouchableOpacity>

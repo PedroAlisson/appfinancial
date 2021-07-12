@@ -19,7 +19,7 @@ export const Container = styled.View`
 export const Text = styled.Text`
   color: #fff;
   font-family: "RobotoSlab-Regular";
-  font-size: 30px;
+  font-size: 25px;
   align-items: center;
 `;
 
