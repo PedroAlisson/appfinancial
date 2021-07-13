@@ -5,15 +5,18 @@ import api from "../../../libs/api";
 import Header from "../../Header";
 
 import { Container, ViewHeader } from "./styles";
-import { FormHandles } from "@unform/core";
+
 import { ScrollView, TextInput } from "react-native-gesture-handler";
 import * as Yup from "yup";
 import Input from "../../Input";
 import Button from "../../Button";
-import { Form } from "@unform/mobile";
+
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { format } from "date-fns";
 import HeaderBack from "../../HeaderBack";
+
+import { Form } from "@unform/mobile";
+import { FormHandles } from "@unform/core";
 
 interface Params {
   invest: Object;
@@ -23,7 +26,7 @@ interface InvestPropsAlterRequest {
   name: string;
   mes: string;
   value: number;
-  amount: number;
+  amount: string;
   date: Date;
   user_id: string;
 }
@@ -46,6 +49,7 @@ const CardInvestAlter: React.FC = () => {
           mes: Yup.string().required("Mes obrigatiorio"),
           value: Yup.number().required("Valor Obrigatória"),
           date: Yup.date().required("Data Obrigatória"),
+          amount: Yup.string().required("Quantidade Obrigatória"),
         });
 
         //   await schema.validate(data, {
@@ -125,7 +129,7 @@ const CardInvestAlter: React.FC = () => {
                 autoCorrect={false}
                 autoCapitalize="none"
                 name="amount"
-                icon="dollar-sign"
+                icon="settings"
                 placeholder="Quantidade"
                 returnKeyType="next"
                 onSubmitEditing={() => {

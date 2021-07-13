@@ -3,7 +3,6 @@ import { format } from "date-fns";
 import React, { useCallback } from "react";
 import { Alert } from "react-native";
 import api from "../../../libs/api";
-import Header from "../../Header";
 import HeaderBack from "../../HeaderBack";
 
 import {
@@ -45,6 +44,7 @@ const CardPrimary: React.FC = () => {
         <Text>Mês: {invest.mes}</Text>
         <Text>Quantidade: {invest.amount}</Text>
         <Text>Valor: {invest.value}</Text>
+        <Text>Total: {invest.total}</Text>
         <ContainerButton>
           <Button
             style={{ backgroundColor: "orange" }}
