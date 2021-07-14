@@ -16,14 +16,15 @@ import { format } from "date-fns";
 import HeaderBack from "../../HeaderBack";
 
 interface Params {
-  invest: Object;
+  bill: Object;
 }
 
 interface InvestPropsAlterRequest {
   name: string;
-  mes: string;
-  value: number;
   date: Date;
+  status: string;
+  value: number;
+  mes: string;
   user_id: string;
 }
 const CardBillAlter: React.FC = () => {
@@ -53,7 +54,7 @@ const CardBillAlter: React.FC = () => {
         //   });
         //
 
-        const { name, mes, value, date } = data;
+        const { name, date, status, value, mes } = data;
 
         const user = await AsyncStorage.getItem("@Financial:Id");
 
@@ -68,6 +69,7 @@ const CardBillAlter: React.FC = () => {
           mes,
           value,
           date,
+          status,
           user_id,
         });
 
@@ -136,9 +138,10 @@ const CardBillAlter: React.FC = () => {
                 autoCorrect={false}
                 autoCapitalize="none"
                 name="value"
-                defaultValue={bill.value}
+                keyboardType="numeric"
                 icon="dollar-sign"
                 placeholder="Valor"
+                defaultValue={bill.value}
                 returnKeyType="next"
                 onSubmitEditing={() => {
                   value.current?.focus();

@@ -1,6 +1,6 @@
 import React, { useCallback, useRef } from "react";
 import { useNavigation, useRoute } from "@react-navigation/core";
-import { Alert, KeyboardAvoidingView, Platform } from "react-native";
+import { Alert, KeyboardAvoidingView, Platform, Text } from "react-native";
 import api from "../../../libs/api";
 import Header from "../../Header";
 
@@ -26,7 +26,6 @@ interface InvestPropsAlterRequest {
   name: string;
   mes: string;
   value: number;
-  amount: string;
   date: Date;
   user_id: string;
 }
@@ -127,8 +126,10 @@ const CardInvestAlter: React.FC = () => {
               <Input
                 ref={amountInputRef}
                 autoCorrect={false}
+                keyboardType="numeric"
                 autoCapitalize="none"
                 name="amount"
+                defaultValue={invest.amount.toString()}
                 icon="settings"
                 placeholder="Quantidade"
                 returnKeyType="next"

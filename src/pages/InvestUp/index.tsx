@@ -115,6 +115,7 @@ const InvestUp: React.FC = () => {
                 autoCorrect={false}
                 autoCapitalize="none"
                 name="amount"
+                keyboardType="numeric"
                 icon="dollar-sign"
                 placeholder="Quantidade"
                 returnKeyType="next"
@@ -128,6 +129,7 @@ const InvestUp: React.FC = () => {
                 autoCapitalize="none"
                 name="value"
                 icon="dollar-sign"
+                keyboardType="numeric"
                 placeholder="Valor"
                 returnKeyType="next"
                 onSubmitEditing={() => {

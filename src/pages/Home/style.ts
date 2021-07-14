@@ -33,10 +33,8 @@ export const TextInformation = styled.Text`
 
 export const Icon = styled(FeatherIcon)`
   margin-top: 20px;
-  width: 50px;
-  color: black;
-  background-color: gold;
-  border-radius: 5px;
+  width: 100px;
+  color: gold;
 `;
 
 export const TextButton = styled.Text`
