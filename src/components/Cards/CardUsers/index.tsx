@@ -37,25 +37,23 @@ interface UserPropsUpdate {
 }
 
 interface Params {
-  bill: Object;
+  users: Object;
 }
 
 const CardUsers: React.FC = () => {
   const navigation = useNavigation();
+  const formRef = useRef<FormHandles>(null);
   const emailInputRef = useRef<TextInput>(null);
   const passwordInputRef = useRef<TextInput>(null);
-  const formRef = useRef<FormHandles>(null);
 
-  const [user, setUser] = useState<UserPropsUpdate>();
-
-  // const [email, setEmail] = useState([]);
-  // const [password, setPassword] = useState([]);
+  const [user, setUser] = useState<UserPropsUpdate>({});
 
   useEffect(() => {
     async function findUser() {
       const token = await AsyncStorage.getItem("@Financial:Token");
       api.defaults.headers.Authorization = `Baered ${token}`;
       const users = await api.get("users");
+
       const resultsUser = users.data;
 
       if (resultsUser) {
@@ -66,30 +64,25 @@ const CardUsers: React.FC = () => {
     findUser();
   }, []);
 
-  const handleUserAlter = useCallback(
-    async ({ name, email, password }: UserPropsUpdate) => {
-      try {
-        //const { name, email, password } = data;
-        console.log("kkk", name, email, password);
-        const user_id = await AsyncStorage.getItem("@Financial:Id");
-        const id = JSON.parse(user_id);
+  const handleUserAlter = useCallback(async (data: InvestPropsAlterRequest) => {
+    try {
+      const { name, email, password } = data;
+      console.log("Dados: ", name, email, password);
+      const user_id = await AsyncStorage.getItem("@Financial:Id");
+      const id = JSON.parse(user_id);
 
-        // const users = await api.put(`users/${id}`, {
-        //   name,
-        //    email,
-        //   password,
-        // });
+      const users = await api.put(`users/${id}`, {
+        name,
+        email,
+        password,
+      });
 
-        // Alert.alert("Usuário Alterado com sucesso");
-        //reset();
-        return;
-      } catch (error) {
-        Alert.alert("Erro ao Alterar usuário");
-        return;
-      }
-    },
-    []
-  );
+      Alert.alert("Usuário Alterado com sucesso");
+    } catch (error) {
+      Alert.alert("Erro ao Alterar usuário");
+    }
+    UpdateUser();
+  }, []);
 
   const handleUsersDelete = useCallback(async () => {
     const user_id = await AsyncStorage.getItem("@Financial:Id");
@@ -116,15 +109,12 @@ const CardUsers: React.FC = () => {
             <View>
               <Title>Perfil do Usuário</Title>
             </View>
-            <Form
-              initialData={user}
-              ref={formRef}
-              onSubmit={() => console.log(name, email, password)}
-            >
+            <Form ref={formRef} onSubmit={handleUserAlter}>
               <Input
                 autoCapitalize="words"
                 name="name"
                 icon="user"
+                defaultValue={user.name}
                 placeholder="Nome"
                 returnKeyType="next"
                 onSubmitEditing={() => {
@@ -137,6 +127,7 @@ const CardUsers: React.FC = () => {
                 autoCorrect={false}
                 autoCapitalize="none"
                 name="email"
+                defaultValue={user.email}
                 icon="mail"
                 placeholder="E-mail"
                 returnKeyType="next"
@@ -148,6 +139,7 @@ const CardUsers: React.FC = () => {
                 ref={passwordInputRef}
                 secureTextEntry
                 name="password"
+                defaultValue={user.password}
                 icon="lock"
                 placeholder="Senha"
                 textContentType="newPassword"

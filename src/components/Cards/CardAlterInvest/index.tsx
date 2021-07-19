@@ -28,6 +28,7 @@ interface InvestPropsAlterRequest {
   value: number;
   date: Date;
   user_id: string;
+  amount: number;
 }
 const CardInvestAlter: React.FC = () => {
   const route = useRoute();
@@ -106,6 +107,7 @@ const CardInvestAlter: React.FC = () => {
                 autoCapitalize="words"
                 name="name"
                 icon="info"
+                defaultValue={invest.name}
                 returnKeyType="next"
                 onSubmitEditing={() => {
                   mesInputRef.current?.focus();
@@ -117,6 +119,7 @@ const CardInvestAlter: React.FC = () => {
                 autoCapitalize="none"
                 name="mes"
                 icon="calendar"
+                defaultValue={invest.mes}
                 placeholder="Mes"
                 returnKeyType="next"
                 onSubmitEditing={() => {
@@ -142,6 +145,7 @@ const CardInvestAlter: React.FC = () => {
                 autoCorrect={false}
                 autoCapitalize="none"
                 name="value"
+                defaultValue={invest.value}
                 icon="dollar-sign"
                 placeholder="Valor"
                 returnKeyType="next"
